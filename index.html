@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verinoda Labs</title>
+<meta name="description" content="Tools that make AI use efficient and cut its cost. Verinoda and Verinoda Symbiosis.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<meta property="og:title" content="Verinoda Labs">
+<meta property="og:description" content="Tools that make AI use efficient and cut its cost.">
+<style>
+:root{--bg:#0b0f1a;--panel:#121832;--line:#232b55;--text:#e8ecff;--muted:#8f9bc7;--a:#7c5cff;--b:#22d3ee}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 "Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px}.brand img{width:32px;height:32px}
+.nav-r{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:15px}
+.nav-r a:hover{color:var(--text)}
+.lang{border:1px solid var(--line);background:none;color:var(--text);border-radius:8px;padding:5px 10px;cursor:pointer;font:inherit;font-size:13px}
+.hero{position:relative;padding:84px 0 72px;overflow:hidden;isolation:isolate}
+.hero:before{content:"";position:absolute;top:-20%;right:-10%;width:640px;height:640px;background:radial-gradient(closest-side,rgba(124,92,255,.35),transparent);z-index:-1}
+.hero:after{content:"";position:absolute;bottom:-30%;left:-10%;width:520px;height:520px;background:radial-gradient(closest-side,rgba(34,211,238,.22),transparent);z-index:-1}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:4px 14px;font-size:13px;color:var(--b);background:rgba(34,211,238,.06)}
+h1{font-size:clamp(36px,6vw,64px);line-height:1.08;margin:18px 0 16px;letter-spacing:-.02em;max-width:800px}
+.grad{background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:19px;color:var(--muted);max-width:640px}
+.cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{padding:12px 22px;border-radius:10px;font-weight:600;border:1px solid var(--line)}
+.btn.p{background:linear-gradient(90deg,var(--a),#5b7cff);border-color:transparent}
+.btn:hover{transform:translateY(-1px)}
+section{padding:56px 0}
+h2{font-size:30px;margin:0 0 8px;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0 0 30px}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--a);transform:translateY(-3px)}
+.card h3{margin:10px 0 8px;font-size:21px}.card p{margin:0 0 14px;color:var(--muted)}
+.ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(124,92,255,.25),rgba(34,211,238,.2));font-size:22px}
+code,pre{font-family:ui-monospace,Consolas,Menlo,monospace}
+pre{background:#080b16;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0 0 16px;overflow-x:auto;font-size:13.5px;color:#c9d4ff}
+.link{color:var(--b);font-weight:600}
+.band{background:var(--panel);border-block:1px solid var(--line)}
+.status{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{font-size:12px;border-radius:99px;padding:3px 10px;border:1px solid var(--line);color:var(--muted)}
+.chip.ok{color:#5eead4;border-color:rgba(94,234,212,.4)}.chip.w{color:#fbbf24;border-color:rgba(251,191,36,.4)}
+footer{padding:36px 0 50px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+[data-tr]{display:none}body.tr [data-tr]{display:revert}body.tr [data-en]{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="#"><img src="logo.svg" alt="">Verinoda Labs</a>
+    <div class="nav-r">
+      <a href="#products"><span data-en>Products</span><span data-tr>Ürünler</span></a>
+      <a href="#why"><span data-en>Why</span><span data-tr>Neden</span></a>
+      <a href="https://github.com/Verinoda-Labs">GitHub</a>
+      <button class="lang" id="lang" aria-label="Language">TR</button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="tag"><span data-en>Developer tools for AI agents</span><span data-tr>Yapay zeka ajanları için geliştirici araçları</span></span>
+    <h1>
+      <span data-en>Use AI efficiently. <span class="grad">Pay less for it.</span></span>
+      <span data-tr>Yapay zekayı verimli kullan. <span class="grad">Maliyetini düşür.</span></span>
+    </h1>
+    <p class="lead">
+      <span data-en>Verinoda Labs builds tools that let AI coding agents read less, guess less and spend fewer tokens, while giving answers you can check.</span>
+      <span data-tr>Verinoda Labs, yapay zeka kodlama ajanlarının daha az okuyup daha az tahmin etmesini ve daha az token harcamasını sağlayan, cevapları doğrulanabilir kılan araçlar geliştirir.</span>
+    </p>
+    <div class="cta">
+      <a class="btn p" href="#products"><span data-en>See our products</span><span data-tr>Ürünleri gör</span></a>
+      <a class="btn" href="https://github.com/Verinoda-Labs">GitHub</a>
+    </div>
+  </header>
+</div>
+
+<div class="band"><div class="wrap"><section id="why">
+  <h2><span data-en>One idea, done carefully</span><span data-tr>Tek fikir, özenle uygulandı</span></h2>
+  <p class="sub"><span data-en>Fewer tokens and more trustworthy results come from the same place: knowing what the code actually says.</span><span data-tr>Daha az token ve daha güvenilir sonuç aynı yerden gelir: kodun gerçekte ne dediğini bilmek.</span></p>
+  <div class="grid">
+    <div class="card"><div class="ico">🔎</div><h3><span data-en>Evidence first</span><span data-tr>Önce kanıt</span></h3><p><span data-en>Every answer is a claim with <code>file:line</code> evidence and an explicit status.</span><span data-tr>Her cevap, <code>file:line</code> kanıtı ve açık bir durum taşıyan bir iddiadır.</span></p></div>
+    <div class="card"><div class="ico">🪙</div><h3><span data-en>Spend fewer tokens</span><span data-tr>Daha az token</span></h3><p><span data-en>Agents ask a precise index instead of re-reading whole files.</span><span data-tr>Ajanlar dosyaları baştan okumak yerine hassas bir indekse sorar.</span></p></div>
+    <div class="card"><div class="ico">🤝</div><h3><span data-en>Honest unknowns</span><span data-tr>Dürüst bilinmeyenler</span></h3><p><span data-en>No evidence means "unknown" with a next step, never a confident guess.</span><span data-tr>Kanıt yoksa cevap "bilinmiyor" ve bir sonraki adımdır; asla kendinden emin bir tahmin değil.</span></p></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section id="products">
+  <h2><span data-en>Products</span><span data-tr>Ürünler</span></h2>
+  <p class="sub"><span data-en>A small family of tools that work together.</span><span data-tr>Birlikte çalışan küçük bir ürün ailesi.</span></p>
+  <div class="grid">
+    <div class="card">
+      <div class="ico">◈</div>
+      <h3>Verinoda</h3>
+      <div class="status"><span class="chip ok">verified</span><span class="chip w">inference</span><span class="chip">unknown</span></div>
+      <p><span data-en>Evidence-first code intelligence for AI coding agents. CLI and MCP server.</span><span data-tr>AI kodlama ajanları için kanıt öncelikli kod zekâsı. CLI ve MCP sunucusu.</span></p>
+      <pre>pip install verinoda
+# or
+npx verinoda</pre>
+      <a class="link" href="https://github.com/ozcinax-star/verinoda">GitHub →</a>
+    </div>
+    <div class="card">
+      <div class="ico">⚡</div>
+      <h3>Verinoda Symbiosis</h3>
+      <div class="status"><span class="chip">Claude Code</span><span class="chip">verinoda-live</span></div>
+      <p><span data-en>Verinoda and Claude Code, together. A mod that keeps the index fresh, nudges the agent to use it and reviews commits.</span><span data-tr>Verinoda ve Claude Code birlikte. İndeksi taze tutan, ajanı kullanmaya yönlendiren ve commit'leri inceleyen bir mod.</span></p>
+      <a class="link" href="https://github.com/ozcinax-star/verinoda-symbiosis">GitHub →</a>
+    </div>
+  </div>
+</section></div>
+
+<div class="wrap"><footer>
+  <span>© 2026 Verinoda Labs</span>
+  <span><a href="https://github.com/Verinoda-Labs">github.com/Verinoda-Labs</a></span>
+</footer></div>
+
+<script>
+(function(){
+  var b=document.body,btn=document.getElementById("lang"),k="vl-lang",v=null;
+  try{v=localStorage.getItem(k)}catch(e){}
+  if(!v)v=(navigator.language||"").toLowerCase().indexOf("tr")===0?"tr":"en";
+  function set(l){b.classList.toggle("tr",l==="tr");document.documentElement.lang=l;btn.textContent=l==="tr"?"EN":"TR";try{localStorage.setItem(k,l)}catch(e){}}
+  btn.onclick=function(){set(b.classList.contains("tr")?"en":"tr")};
+  set(v);
+})();
+</script>
+</body>
+</html>
