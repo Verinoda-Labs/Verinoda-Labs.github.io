@@ -4,118 +4,343 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Verinoda Labs</title>
-<meta name="description" content="Tools that make AI use efficient and cut its cost. Verinoda and Verinoda Symbiosis.">
+<meta name="description" content="Verinoda Labs builds open-source tools that help AI coding agents work from evidence: fewer guesses, answers you can verify, and a clear view of what they cost.">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="canonical" href="https://verinoda-labs.github.io/">
+<meta name="theme-color" content="#0b0f1a">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Verinoda Labs">
-<meta property="og:description" content="Tools that make AI use efficient and cut its cost.">
+<meta property="og:description" content="Open-source tools for evidence-first, cost-aware AI development.">
+<meta property="og:url" content="https://verinoda-labs.github.io/">
+<meta property="og:image" content="https://verinoda-labs.github.io/banner.png">
+<meta name="twitter:card" content="summary_large_image">
 <style>
-:root{--bg:#0b0f1a;--panel:#121832;--line:#232b55;--text:#e8ecff;--muted:#8f9bc7;--a:#7c5cff;--b:#22d3ee}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 "Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px}.brand img{width:32px;height:32px}
-.nav-r{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:15px}
-.nav-r a:hover{color:var(--text)}
-.lang{border:1px solid var(--line);background:none;color:var(--text);border-radius:8px;padding:5px 10px;cursor:pointer;font:inherit;font-size:13px}
-.hero{position:relative;padding:84px 0 72px;overflow:hidden;isolation:isolate}
-.hero:before{content:"";position:absolute;top:-20%;right:-10%;width:640px;height:640px;background:radial-gradient(closest-side,rgba(124,92,255,.35),transparent);z-index:-1}
-.hero:after{content:"";position:absolute;bottom:-30%;left:-10%;width:520px;height:520px;background:radial-gradient(closest-side,rgba(34,211,238,.22),transparent);z-index:-1}
-.tag{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:4px 14px;font-size:13px;color:var(--b);background:rgba(34,211,238,.06)}
-h1{font-size:clamp(36px,6vw,64px);line-height:1.08;margin:18px 0 16px;letter-spacing:-.02em;max-width:800px}
-.grad{background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{font-size:19px;color:var(--muted);max-width:640px}
-.cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
-.btn{padding:12px 22px;border-radius:10px;font-weight:600;border:1px solid var(--line)}
-.btn.p{background:linear-gradient(90deg,var(--a),#5b7cff);border-color:transparent}
-.btn:hover{transform:translateY(-1px)}
-section{padding:56px 0}
-h2{font-size:30px;margin:0 0 8px;letter-spacing:-.01em}
-.sub{color:var(--muted);margin:0 0 30px}
-.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;transition:border-color .2s,transform .2s}
-.card:hover{border-color:var(--a);transform:translateY(-3px)}
-.card h3{margin:10px 0 8px;font-size:21px}.card p{margin:0 0 14px;color:var(--muted)}
-.ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(124,92,255,.25),rgba(34,211,238,.2));font-size:22px}
-code,pre{font-family:ui-monospace,Consolas,Menlo,monospace}
-pre{background:#080b16;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0 0 16px;overflow-x:auto;font-size:13.5px;color:#c9d4ff}
-.link{color:var(--b);font-weight:600}
-.band{background:var(--panel);border-block:1px solid var(--line)}
-.status{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-.chip{font-size:12px;border-radius:99px;padding:3px 10px;border:1px solid var(--line);color:var(--muted)}
-.chip.ok{color:#5eead4;border-color:rgba(94,234,212,.4)}.chip.w{color:#fbbf24;border-color:rgba(251,191,36,.4)}
-footer{padding:36px 0 50px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+:root{
+  --bg:#ffffff;--bg2:#f5f7fb;--panel:#ffffff;--line:#e2e6f0;--text:#0f1530;--muted:#56607d;
+  --a:#5b3df5;--a2:#7c5cff;--b:#0891b2;--ok:#0f766e;--warn:#b45309;--unk:#56607d;
+  --codebg:#f3f5fa;--hero1:#0b0f1a;--shadow:0 1px 2px rgba(15,21,48,.06),0 8px 24px rgba(15,21,48,.06);
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0b0f1a;--bg2:#0e1324;--panel:#121832;--line:#232b55;--text:#e8ecff;--muted:#9aa6cf;
+  --a:#8b73ff;--a2:#8b73ff;--b:#22d3ee;--ok:#5eead4;--warn:#fbbf24;--unk:#9aa6cf;
+  --codebg:#080b16;--shadow:none}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 "Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--a);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--a);color:#fff;padding:8px 14px;border-radius:8px;z-index:100}
+.skip:focus{left:8px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+.grid>*,.hero .wrap>*,.fg>*{min-width:0}
+h1,h2,h3,p{overflow-wrap:break-word}
+html,body{overflow-x:hidden}
+
+/* nav */
+header.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;text-decoration:none;letter-spacing:-.01em}
+.brand img{width:30px;height:30px;border-radius:8px}
+.links{display:flex;gap:26px;align-items:center;font-size:14.5px}
+.links a{color:var(--muted);text-decoration:none;font-weight:500}
+.links a:hover{color:var(--text)}
+.lang{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:8px;padding:5px 11px;cursor:pointer;font:inherit;font-size:12.5px;font-weight:600}
+.gh{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:9px;padding:7px 14px;color:var(--text)!important;background:var(--panel)}
+.gh:hover{border-color:var(--a)}
+
+/* hero */
+.hero{background:var(--hero1);color:#e8ecff;position:relative;overflow:hidden;isolation:isolate}
+.hero:before{content:"";position:absolute;top:-30%;right:-12%;width:720px;height:720px;background:radial-gradient(closest-side,rgba(124,92,255,.38),transparent);z-index:-1}
+.hero:after{content:"";position:absolute;bottom:-40%;left:-10%;width:600px;height:600px;background:radial-gradient(closest-side,rgba(34,211,238,.2),transparent);z-index:-1}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding-top:88px;padding-bottom:88px}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:13px;font-weight:600;color:#67e8f9;letter-spacing:.04em;text-transform:uppercase}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:#22d3ee;box-shadow:0 0 0 4px rgba(34,211,238,.2)}
+h1{font-size:clamp(36px,5.2vw,58px);line-height:1.07;letter-spacing:-.025em;margin:18px 0 20px;font-weight:700}
+.grad{background:linear-gradient(90deg,#a99bff,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:19px;color:#aab4dc;max-width:560px;margin:0}
+.cta{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 24px;border-radius:10px;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,.18);color:#e8ecff;font-size:15px}
+.btn.p{background:linear-gradient(90deg,#6d4cff,#4f7cff);border-color:transparent;color:#fff}
+.btn:hover{filter:brightness(1.12)}
+.note{margin-top:22px;font-size:13px;color:#7f8bb3}
+
+/* claim card (hero visual) */
+.claim{background:rgba(18,24,50,.85);border:1px solid #2a3366;border-radius:16px;padding:20px 22px;box-shadow:0 20px 60px rgba(0,0,0,.4);font-family:ui-monospace,Consolas,Menlo,monospace;font-size:13px;color:#c9d4ff}
+.claim .q{color:#8f9bc7;margin:0 0 14px;padding-bottom:12px;border-bottom:1px solid #232b55}
+.claim .q b{color:#e8ecff;font-weight:600}
+.row{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin-bottom:14px}
+.row:last-of-type{margin-bottom:6px}
+.st{font-size:11px;font-weight:700;padding:2px 9px;border-radius:99px;align-self:start;white-space:nowrap}
+.st.v{background:rgba(94,234,212,.14);color:#5eead4}.st.i{background:rgba(251,191,36,.14);color:#fbbf24}.st.u{background:rgba(148,163,184,.16);color:#a3b0cf}
+.row .t{line-height:1.5}.row .loc{color:#22d3ee}
+.row .nx{grid-column:2;color:#7f8bb3;font-size:12px}
+.cap{font-family:"Segoe UI",system-ui,sans-serif;font-size:11.5px;color:#7f8bb3;margin:10px 0 0;text-align:right}
+
+/* sections */
+section{padding:88px 0}
+.alt{background:var(--bg2);border-block:1px solid var(--line)}
+.kicker{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--a);margin:0 0 10px}
+h2{font-size:clamp(26px,3.4vw,36px);line-height:1.15;letter-spacing:-.02em;margin:0 0 14px;font-weight:700}
+.sub{color:var(--muted);max-width:660px;margin:0 0 44px;font-size:17px}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px;box-shadow:var(--shadow)}
+.card h3{font-size:20px;margin:0 0 8px;letter-spacing:-.01em}
+.card p{color:var(--muted);margin:0 0 14px}
+.ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;margin-bottom:16px;background:color-mix(in srgb,var(--a) 12%,transparent);color:var(--a)}
+.ico svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* trust strip */
+.strip{border-bottom:1px solid var(--line);background:var(--bg)}
+.strip .wrap{display:flex;gap:10px 34px;flex-wrap:wrap;justify-content:center;padding-top:22px;padding-bottom:22px;font-size:14px;color:var(--muted);font-weight:500}
+.strip span{display:inline-flex;gap:8px;align-items:center}
+.strip svg{width:16px;height:16px;stroke:var(--ok);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* products */
+.prod{display:flex;flex-direction:column}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 16px}
+.badge{font-size:12px;font-weight:600;border-radius:99px;padding:3px 11px;border:1px solid var(--line);color:var(--muted);background:var(--bg2)}
+.badge.b{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent);background:color-mix(in srgb,var(--warn) 8%,transparent)}
+.badge.o{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 35%,transparent);background:color-mix(in srgb,var(--ok) 8%,transparent)}
+ul.ft{list-style:none;margin:0 0 20px;padding:0;color:var(--muted)}
+ul.ft li{padding:5px 0 5px 26px;position:relative}
+ul.ft li:before{content:"";position:absolute;left:2px;top:13px;width:12px;height:6px;border-left:2px solid var(--ok);border-bottom:2px solid var(--ok);transform:rotate(-45deg)}
+pre{background:var(--codebg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:0 0 20px;overflow-x:auto;font:13.5px/1.6 ui-monospace,Consolas,Menlo,monospace;color:var(--text)}
+code{font-family:ui-monospace,Consolas,Menlo,monospace;font-size:.92em}
+.more{margin-top:auto;display:flex;gap:18px;flex-wrap:wrap;font-weight:600;font-size:15px}
+.more a{color:var(--a);text-decoration:none}.more a:hover{text-decoration:underline}
+
+/* steps */
+.steps{counter-reset:s}
+.step{position:relative;padding-top:6px}
+.step:before{counter-increment:s;content:"0" counter(s);display:block;font-size:13px;font-weight:700;color:var(--a);letter-spacing:.08em;margin-bottom:10px}
+.step h3{font-size:19px;margin:0 0 8px}.step p{color:var(--muted);margin:0}
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
+.legend .st{font-family:ui-monospace,Consolas,Menlo,monospace;font-size:12px;padding:4px 12px}
+.legend .st.v{color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,transparent)}
+.legend .st.i{color:var(--warn);background:color-mix(in srgb,var(--warn) 12%,transparent)}
+.legend .st.u{color:var(--unk);background:color-mix(in srgb,var(--unk) 14%,transparent)}
+.legend .st.x{color:#b91c1c;background:rgba(185,28,28,.1)}
+@media (prefers-color-scheme:dark){.legend .st.x{color:#fca5a5;background:rgba(252,165,165,.12)}}
+
+/* transparency quote */
+.quote{border-left:3px solid var(--a);padding:6px 0 6px 22px;margin:0;font-size:19px;line-height:1.6;max-width:760px}
+.quote small{display:block;margin-top:12px;font-size:14px;color:var(--muted)}
+.quote a{color:var(--a);font-weight:600;text-decoration:none}.quote a:hover{text-decoration:underline}
+
+/* roadmap */
+.focus .card{padding:24px}
+.focus h3{font-size:18px}
+.disc{margin-top:22px;font-size:13.5px;color:var(--muted)}
+
+/* cta band */
+.band{background:var(--hero1);color:#e8ecff;text-align:center;position:relative;overflow:hidden;isolation:isolate}
+.band:before{content:"";position:absolute;inset:auto 0 -60% 0;margin:auto;width:700px;height:500px;background:radial-gradient(closest-side,rgba(124,92,255,.35),transparent);z-index:-1}
+.band h2{color:#fff}.band p{color:#aab4dc;max-width:560px;margin:0 auto 30px;font-size:17px}
+.band .cta{justify-content:center;margin-top:0}
+
+footer{background:var(--bg2);border-top:1px solid var(--line);padding:56px 0 36px;font-size:14px;color:var(--muted)}
+.fg{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:36px}
+footer h4{margin:0 0 12px;font-size:13px;color:var(--text);letter-spacing:.05em;text-transform:uppercase}
+footer ul{list-style:none;margin:0;padding:0}
+footer li{margin:7px 0}
+footer a{text-decoration:none}footer a:hover{color:var(--text);text-decoration:underline}
+.fine{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:13px}
+
 [data-tr]{display:none}body.tr [data-tr]{display:revert}body.tr [data-en]{display:none}
+
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr;padding-top:56px;padding-bottom:56px;gap:36px}
+  .links a.hide{display:none}
+  .fg{grid-template-columns:1fr 1fr}
+  section{padding:64px 0}
+}
+@media (max-width:520px){
+  .links{gap:14px}.gh span{display:none}
+  .g2{grid-template-columns:1fr}
+  .fg{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <nav>
-    <a class="brand" href="#"><img src="logo.svg" alt="">Verinoda Labs</a>
-    <div class="nav-r">
-      <a href="#products"><span data-en>Products</span><span data-tr>Ürünler</span></a>
-      <a href="#why"><span data-en>Why</span><span data-tr>Neden</span></a>
-      <a href="https://github.com/Verinoda-Labs">GitHub</a>
-      <button class="lang" id="lang" aria-label="Language">TR</button>
-    </div>
-  </nav>
+<a class="skip" href="#main"><span data-en>Skip to content</span><span data-tr>İçeriğe geç</span></a>
 
-  <header class="hero">
-    <span class="tag"><span data-en>Developer tools for AI agents</span><span data-tr>Yapay zeka ajanları için geliştirici araçları</span></span>
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top"><img src="logo.svg" alt="">Verinoda Labs</a>
+    <nav class="links" aria-label="Main">
+      <a class="hide" href="#products"><span data-en>Products</span><span data-tr>Ürünler</span></a>
+      <a class="hide" href="#approach"><span data-en>Approach</span><span data-tr>Yaklaşım</span></a>
+      <a class="hide" href="#transparency"><span data-en>Transparency</span><span data-tr>Şeffaflık</span></a>
+      <a class="hide" href="#direction"><span data-en>Direction</span><span data-tr>Yön</span></a>
+      <a class="gh" href="https://github.com/Verinoda-Labs" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span></a>
+      <button class="lang" id="lang" type="button" aria-label="Switch language">TR</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div id="top" class="hero"><div class="wrap">
+  <div>
+    <span class="eyebrow"><i></i><span data-en>Open-source AI developer tooling</span><span data-tr>Açık kaynak yapay zeka geliştirici araçları</span></span>
     <h1>
-      <span data-en>Use AI efficiently. <span class="grad">Pay less for it.</span></span>
-      <span data-tr>Yapay zekayı verimli kullan. <span class="grad">Maliyetini düşür.</span></span>
+      <span data-en>AI that works from <span class="grad">evidence</span>, not guesses.</span>
+      <span data-tr>Tahminle değil, <span class="grad">kanıtla</span> çalışan yapay zeka.</span>
     </h1>
     <p class="lead">
-      <span data-en>Verinoda Labs builds tools that let AI coding agents read less, guess less and spend fewer tokens, while giving answers you can check.</span>
-      <span data-tr>Verinoda Labs, yapay zeka kodlama ajanlarının daha az okuyup daha az tahmin etmesini ve daha az token harcamasını sağlayan, cevapları doğrulanabilir kılan araçlar geliştirir.</span>
+      <span data-en>Verinoda Labs builds tools that help AI coding agents read the right code, say what they can prove, and admit what they cannot, so teams use AI more efficiently and keep its cost under control.</span>
+      <span data-tr>Verinoda Labs, yapay zeka kodlama ajanlarının doğru kodu okumasına, kanıtlayabildiğini söylemesine ve kanıtlayamadığını kabul etmesine yardım eden araçlar geliştirir. Böylece ekipler yapay zekayı daha verimli kullanır ve maliyetini kontrol altında tutar.</span>
     </p>
     <div class="cta">
-      <a class="btn p" href="#products"><span data-en>See our products</span><span data-tr>Ürünleri gör</span></a>
-      <a class="btn" href="https://github.com/Verinoda-Labs">GitHub</a>
+      <a class="btn p" href="#products"><span data-en>Explore our products</span><span data-tr>Ürünlerimizi keşfedin</span></a>
+      <a class="btn" href="#approach"><span data-en>How it works</span><span data-tr>Nasıl çalışır</span></a>
     </div>
-  </header>
-</div>
-
-<div class="band"><div class="wrap"><section id="why">
-  <h2><span data-en>One idea, done carefully</span><span data-tr>Tek fikir, özenle uygulandı</span></h2>
-  <p class="sub"><span data-en>Fewer tokens and more trustworthy results come from the same place: knowing what the code actually says.</span><span data-tr>Daha az token ve daha güvenilir sonuç aynı yerden gelir: kodun gerçekte ne dediğini bilmek.</span></p>
-  <div class="grid">
-    <div class="card"><div class="ico">🔎</div><h3><span data-en>Evidence first</span><span data-tr>Önce kanıt</span></h3><p><span data-en>Every answer is a claim with <code>file:line</code> evidence and an explicit status.</span><span data-tr>Her cevap, <code>file:line</code> kanıtı ve açık bir durum taşıyan bir iddiadır.</span></p></div>
-    <div class="card"><div class="ico">🪙</div><h3><span data-en>Spend fewer tokens</span><span data-tr>Daha az token</span></h3><p><span data-en>Agents ask a precise index instead of re-reading whole files.</span><span data-tr>Ajanlar dosyaları baştan okumak yerine hassas bir indekse sorar.</span></p></div>
-    <div class="card"><div class="ico">🤝</div><h3><span data-en>Honest unknowns</span><span data-tr>Dürüst bilinmeyenler</span></h3><p><span data-en>No evidence means "unknown" with a next step, never a confident guess.</span><span data-tr>Kanıt yoksa cevap "bilinmiyor" ve bir sonraki adımdır; asla kendinden emin bir tahmin değil.</span></p></div>
+    <p class="note"><span data-en>Apache-2.0 · Free to use · Beta software</span><span data-tr>Apache-2.0 · Ücretsiz · Beta yazılım</span></p>
   </div>
-</section></div></div>
 
-<div class="wrap"><section id="products">
-  <h2><span data-en>Products</span><span data-tr>Ürünler</span></h2>
-  <p class="sub"><span data-en>A small family of tools that work together.</span><span data-tr>Birlikte çalışan küçük bir ürün ailesi.</span></p>
-  <div class="grid">
-    <div class="card">
-      <div class="ico">◈</div>
+  <div class="claim" role="img" aria-label="Illustrative example of an answer: three claims, each with a status and a file and line">
+    <p class="q"><b>Q</b> <span data-en>Where is the session token validated?</span><span data-tr>Oturum token'ı nerede doğrulanıyor?</span></p>
+    <div class="row"><span class="st v">verified</span><span class="t"><span class="loc">auth/session.py:42</span><br><span data-en>validate_token() rejects expired tokens</span><span data-tr>validate_token() süresi dolan token'ı reddeder</span></span></div>
+    <div class="row"><span class="st i">inference</span><span class="t"><span class="loc">api/routes.py:118</span><br><span data-en>probably called from the login handler</span><span data-tr>muhtemelen login işleyicisinden çağrılıyor</span></span></div>
+    <div class="row"><span class="st u">unknown</span><span class="t"><span data-en>refresh-token rotation</span><span data-tr>refresh-token rotasyonu</span></span><span class="nx"><span data-en>no evidence found → next: search tests/</span><span data-tr>kanıt bulunamadı → sonraki adım: tests/ içinde ara</span></span></div>
+    <p class="cap"><span data-en>Illustrative example</span><span data-tr>Örnek gösterim</span></p>
+  </div>
+</div></div>
+
+<div class="strip"><div class="wrap">
+  <span><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg><span data-en>Open source, Apache-2.0</span><span data-tr>Açık kaynak, Apache-2.0</span></span>
+  <span><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg><span data-en>Windows, Linux and macOS</span><span data-tr>Windows, Linux ve macOS</span></span>
+  <span><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg><span data-en>On PyPI and npm</span><span data-tr>PyPI ve npm'de</span></span>
+  <span><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg><span data-en>MCP server for any compatible agent</span><span data-tr>Uyumlu her ajan için MCP sunucusu</span></span>
+</div></div>
+
+<section id="products"><div class="wrap">
+  <p class="kicker"><span data-en>Products</span><span data-tr>Ürünler</span></p>
+  <h2><span data-en>A small family of tools, built to work together</span><span data-tr>Birlikte çalışmak üzere tasarlanmış küçük bir ürün ailesi</span></h2>
+  <p class="sub"><span data-en>One core that understands your code, and integrations that put it where your agent already works.</span><span data-tr>Kodunuzu anlayan tek bir çekirdek ve onu ajanınızın zaten çalıştığı yere getiren entegrasyonlar.</span></p>
+
+  <div class="grid g2">
+    <article class="card prod">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 6l8 14 8-14"/><circle cx="4" cy="6" r="1.6"/><circle cx="20" cy="6" r="1.6"/><circle cx="12" cy="20" r="1.6"/></svg></div>
       <h3>Verinoda</h3>
-      <div class="status"><span class="chip ok">verified</span><span class="chip w">inference</span><span class="chip">unknown</span></div>
-      <p><span data-en>Evidence-first code intelligence for AI coding agents. CLI and MCP server.</span><span data-tr>AI kodlama ajanları için kanıt öncelikli kod zekâsı. CLI ve MCP sunucusu.</span></p>
+      <div class="badges"><span class="badge b">Beta · 0.4.0</span><span class="badge o">Apache-2.0</span><span class="badge">CLI + MCP</span></div>
+      <p><span data-en>Evidence-first code intelligence. It answers questions about a codebase as claims with <code>file:line</code> evidence and an explicit status, and keeps those claims honest as the code changes.</span><span data-tr>Kanıt öncelikli kod zekâsı. Bir kod tabanı hakkındaki soruları, <code>file:line</code> kanıtı ve açık bir durum taşıyan iddialar olarak yanıtlar; kod değiştikçe bu iddiaları güncel tutar.</span></p>
+      <ul class="ft">
+        <li><span data-en>Checks that the names an agent writes actually exist</span><span data-tr>Ajanın yazdığı isimlerin gerçekten var olduğunu denetler</span></li>
+        <li><span data-en>Flags answers that went stale after a change</span><span data-tr>Bir değişiklikten sonra eskiyen cevapları işaretler</span></li>
+        <li><span data-en>Reviews a change: who depends on it, which tests reach it</span><span data-tr>Değişikliği inceler: kime bağlı, hangi testler etkiler</span></li>
+      </ul>
       <pre>pip install verinoda
 # or
 npx verinoda</pre>
-      <a class="link" href="https://github.com/Verinoda-Labs/verinoda">GitHub →</a>
-    </div>
-    <div class="card">
-      <div class="ico">⚡</div>
-      <h3>Verinoda Symbiosis</h3>
-      <div class="status"><span class="chip">Claude Code</span><span class="chip">verinoda-live</span></div>
-      <p><span data-en>Verinoda and Claude Code, together. A mod that keeps the index fresh, nudges the agent to use it and reviews commits.</span><span data-tr>Verinoda ve Claude Code birlikte. İndeksi taze tutan, ajanı kullanmaya yönlendiren ve commit'leri inceleyen bir mod.</span></p>
-      <a class="link" href="https://github.com/Verinoda-Labs/verinoda-symbiosis">GitHub →</a>
-    </div>
-  </div>
-</section></div>
+      <div class="more"><a href="https://github.com/Verinoda-Labs/verinoda" rel="noopener"><span data-en>Repository →</span><span data-tr>Depo →</span></a><a href="https://pypi.org/project/verinoda/" rel="noopener">PyPI →</a></div>
+    </article>
 
-<div class="wrap"><footer>
-  <span>© 2026 Verinoda Labs</span>
-  <span><a href="https://github.com/Verinoda-Labs">github.com/Verinoda-Labs</a></span>
-</footer></div>
+    <article class="card prod">
+      <div class="ico"><svg viewBox="0 0 24 24"><circle cx="8" cy="12" r="5"/><circle cx="16" cy="12" r="5"/></svg></div>
+      <h3>Verinoda Symbiosis</h3>
+      <div class="badges"><span class="badge o">Apache-2.0</span><span class="badge">Claude Code mod</span></div>
+      <p><span data-en>Verinoda and Claude Code, together. It includes <code>verinoda-live</code>, a mod that runs inside Claude Code.</span><span data-tr>Verinoda ve Claude Code birlikte. Claude Code içinde çalışan bir mod olan <code>verinoda-live</code>'ı içerir.</span></p>
+      <ul class="ft">
+        <li><span data-en>Keeps the code index fresh while the agent edits</span><span data-tr>Ajan düzenleme yaparken kod indeksini taze tutar</span></li>
+        <li><span data-en>Can nudge the agent to consult the index</span><span data-tr>Ajanı indekse danışmaya yönlendirebilir</span></li>
+        <li><span data-en>Reviews commits and shows everything in a pane</span><span data-tr>Commit'leri inceler ve her şeyi bir panelde gösterir</span></li>
+      </ul>
+      <div class="more" style="margin-top:auto"><a href="https://github.com/Verinoda-Labs/verinoda-symbiosis" rel="noopener"><span data-en>Repository →</span><span data-tr>Depo →</span></a></div>
+    </article>
+  </div>
+</div></section>
+
+<section id="approach" class="alt"><div class="wrap">
+  <p class="kicker"><span data-en>Approach</span><span data-tr>Yaklaşım</span></p>
+  <h2><span data-en>Index once. Ask precisely. Verify the answer.</span><span data-tr>Bir kez indeksle. Hassas sor. Cevabı doğrula.</span></h2>
+  <p class="sub"><span data-en>Reading less of the codebase and trusting more of what comes back is where efficiency comes from.</span><span data-tr>Verimlilik, kod tabanının daha azını okumaktan ve geri dönene daha çok güvenebilmekten gelir.</span></p>
+
+  <div class="grid g3 steps">
+    <div class="step"><h3><span data-en>Index</span><span data-tr>İndeksle</span></h3><p><span data-en>Verinoda builds a disposable index inside your project. Your code is never imported into its process; anything that runs, runs in a copy.</span><span data-tr>Verinoda projenizin içinde atılabilir bir indeks kurar. Kodunuz Verinoda'nın sürecine hiç alınmaz; çalıştırılan her şey bir kopyada çalışır.</span></p></div>
+    <div class="step"><h3><span data-en>Ask</span><span data-tr>Sor</span></h3><p><span data-en>Agents and people ask for exactly the code they need, instead of re-reading whole files to find it.</span><span data-tr>Ajanlar ve insanlar, bulmak için dosyaları baştan okumak yerine tam ihtiyaç duydukları kodu ister.</span></p></div>
+    <div class="step"><h3><span data-en>Verify</span><span data-tr>Doğrula</span></h3><p><span data-en>Every answer carries evidence and a status. A claim becomes verified only when fresh evidence supports it, and it is flagged when the code changes.</span><span data-tr>Her cevap kanıt ve durum taşır. Bir iddia ancak taze kanıt desteklerse doğrulanmış sayılır; kod değişince işaretlenir.</span></p></div>
+  </div>
+
+  <div class="legend" aria-label="Claim statuses">
+    <span class="st v">verified</span><span class="st i">strong_inference</span><span class="st i">weak_inference</span><span class="st u">unknown</span><span class="st u">stale</span><span class="st x">contradicted</span>
+  </div>
+</div></section>
+
+<section id="principles"><div class="wrap">
+  <p class="kicker"><span data-en>Principles</span><span data-tr>İlkeler</span></p>
+  <h2><span data-en>What you can hold us to</span><span data-tr>Bizi neye göre değerlendirebilirsiniz</span></h2>
+  <p class="sub"><span data-en>These are enforced in the code and covered by tests, not just written on a web page.</span><span data-tr>Bunlar yalnızca bir web sayfasında yazılı değil; kodda uygulanıyor ve testlerle korunuyor.</span></p>
+  <div class="grid g3">
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M16 16l5 5"/></svg></div><h3><span data-en>Evidence before assertion</span><span data-tr>Önce kanıt, sonra iddia</span></h3><p><span data-en>Search hits, graph edges and model output never count as verification on their own.</span><span data-tr>Arama sonuçları, grafik kenarları ve model çıktısı tek başına asla doğrulama sayılmaz.</span></p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M9 9a3 3 0 1 1 4.2 2.7c-.8.4-1.2 1-1.2 1.8"/><circle cx="12" cy="17.5" r=".6"/></svg></div><h3><span data-en>"Unknown" is an answer</span><span data-tr>"Bilinmiyor" bir cevaptır</span></h3><p><span data-en>No evidence means unknown, with a next step. Never a confident guess.</span><span data-tr>Kanıt yoksa cevap bilinmiyor ve bir sonraki adımdır. Asla kendinden emin bir tahmin değil.</span></p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3><span data-en>Your code stays yours</span><span data-tr>Kodunuz sizde kalır</span></h3><p><span data-en>The index lives in your project folder and can be deleted at any time. Project code is never imported into our process.</span><span data-tr>İndeks proje klasörünüzde durur ve istediğiniz an silinebilir. Proje kodu bizim sürecimize hiç alınmaz.</span></p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="8"/></svg></div><h3><span data-en>A full audit trail</span><span data-tr>Eksiksiz denetim izi</span></h3><p><span data-en>Claims are never silently rewritten: corrections supersede, and history is append-only.</span><span data-tr>İddialar sessizce yeniden yazılmaz: düzeltmeler öncekinin yerini alır, geçmiş yalnızca eklenir.</span></p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg></div><h3><span data-en>Exact names, no look-alikes</span><span data-tr>Tam isim, benzeri değil</span></h3><p><span data-en>A name you write is resolved exactly. If it does not exist, we say so and suggest the nearest real one.</span><span data-tr>Yazdığınız isim tam olarak çözülür. Yoksa bunu söyler ve en yakın gerçek ismi öneririz.</span></p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></div><h3><span data-en>Measured, not marketed</span><span data-tr>Pazarlanan değil, ölçülen</span></h3><p><span data-en>Performance claims are published only with their measurement: model, version, date and raw logs.</span><span data-tr>Performans iddiaları yalnızca ölçümüyle yayımlanır: model, sürüm, tarih ve ham kayıtlar.</span></p></div>
+  </div>
+</div></section>
+
+<section id="transparency" class="alt"><div class="wrap">
+  <p class="kicker"><span data-en>Transparency</span><span data-tr>Şeffaflık</span></p>
+  <h2><span data-en>We publish results that don't flatter us</span><span data-tr>Bizi övmeyen sonuçları da yayımlıyoruz</span></h2>
+  <p class="sub"><span data-en>Cost savings are only worth claiming if they are measured. So we measure, and we report what we find.</span><span data-tr>Maliyet tasarrufu ancak ölçülmüşse söylenmeye değer. Bu yüzden ölçüyor ve bulduğumuzu olduğu gibi paylaşıyoruz.</span></p>
+  <blockquote class="quote">
+    <span data-en>When we measured nudging an agent to use the index in Claude Code, it returned the same facts, with fewer tokens on small codebases and 14% more input tokens on real repositories. We published that result next to the feature.</span>
+    <span data-tr>Claude Code'da ajanı indeksi kullanmaya yönlendirmeyi ölçtüğümüzde aynı bilgileri döndürdü; küçük kod tabanlarında daha az, gerçek depolarda %14 daha fazla girdi token'ı kullandı. Bu sonucu özelliğin yanında yayımladık.</span>
+    <small><span data-en>Source: the Verinoda Symbiosis README.</span><span data-tr>Kaynak: Verinoda Symbiosis README'si.</span> <a href="https://github.com/Verinoda-Labs/verinoda-symbiosis" rel="noopener"><span data-en>Read it →</span><span data-tr>Okuyun →</span></a></small>
+  </blockquote>
+  <p class="disc"><span data-en>Verinoda is in beta. Answers come with their evidence but can be wrong, so read the evidence before a critical decision. No warranty is given (Apache-2.0, "as is").</span><span data-tr>Verinoda beta aşamasındadır. Cevaplar kanıtlarıyla gelir ama yanlış olabilir; kritik bir karardan önce kanıtı okuyun. Garanti verilmez (Apache-2.0, "olduğu gibi").</span></p>
+</div></section>
+
+<section id="direction"><div class="wrap">
+  <p class="kicker"><span data-en>Direction</span><span data-tr>Yön</span></p>
+  <h2><span data-en>Where we are heading</span><span data-tr>Nereye gidiyoruz</span></h2>
+  <p class="sub"><span data-en>Our mission is to make AI development more efficient and less costly. These are the areas we are working on.</span><span data-tr>Misyonumuz yapay zeka ile geliştirmeyi daha verimli ve daha ucuz hale getirmek. Üzerinde çalıştığımız alanlar şunlar.</span></p>
+  <div class="grid g3 focus">
+    <div class="card"><h3><span data-en>Less context, same quality</span><span data-tr>Daha az bağlam, aynı kalite</span></h3><p><span data-en>Giving agents precisely the evidence they need, so they spend fewer tokens on reading.</span><span data-tr>Ajanlara tam ihtiyaç duydukları kanıtı vermek; böylece okumaya daha az token harcarlar.</span></p></div>
+    <div class="card"><h3><span data-en>More agents, more places</span><span data-tr>Daha fazla ajan, daha fazla ortam</span></h3><p><span data-en>Working wherever teams already build: more agents, editors and CI pipelines.</span><span data-tr>Ekiplerin zaten geliştirme yaptığı her yerde çalışmak: daha fazla ajan, editör ve CI hattı.</span></p></div>
+    <div class="card"><h3><span data-en>Visible cost</span><span data-tr>Görünür maliyet</span></h3><p><span data-en>Measuring and reporting what AI assistance really costs, and where it can be reduced.</span><span data-tr>Yapay zeka desteğinin gerçekte neye mal olduğunu ve nerede azaltılabileceğini ölçüp raporlamak.</span></p></div>
+  </div>
+  <p class="disc"><span data-en>This is our direction, not a delivery schedule. Shipped work is tracked in our public repositories.</span><span data-tr>Bu bir teslim takvimi değil, yönümüzdür. Tamamlanan işler herkese açık depolarımızda izlenir.</span></p>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <h2><span data-en>Try Verinoda on your own code</span><span data-tr>Verinoda'yı kendi kodunuzda deneyin</span></h2>
+  <p><span data-en>It is free, open source and installs in a minute. Tell us what works and what doesn't.</span><span data-tr>Ücretsiz, açık kaynak ve bir dakikada kurulur. Neyin çalıştığını ve neyin çalışmadığını bize söyleyin.</span></p>
+  <div class="cta">
+    <a class="btn p" href="https://github.com/Verinoda-Labs/verinoda" rel="noopener"><span data-en>Get Verinoda</span><span data-tr>Verinoda'yı edinin</span></a>
+    <a class="btn" href="https://github.com/Verinoda-Labs/verinoda/issues" rel="noopener"><span data-en>Share feedback</span><span data-tr>Geri bildirim verin</span></a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="fg">
+    <div>
+      <a class="brand" href="#top" style="color:var(--text)"><img src="logo.svg" alt="">Verinoda Labs</a>
+      <p style="margin:14px 0 0;max-width:300px"><span data-en>Tools that help teams use AI efficiently and keep its cost down.</span><span data-tr>Ekiplerin yapay zekayı verimli kullanmasına ve maliyetini düşük tutmasına yardım eden araçlar.</span></p>
+    </div>
+    <div><h4><span data-en>Products</span><span data-tr>Ürünler</span></h4><ul>
+      <li><a href="https://github.com/Verinoda-Labs/verinoda" rel="noopener">Verinoda</a></li>
+      <li><a href="https://github.com/Verinoda-Labs/verinoda-symbiosis" rel="noopener">Verinoda Symbiosis</a></li></ul></div>
+    <div><h4><span data-en>Packages</span><span data-tr>Paketler</span></h4><ul>
+      <li><a href="https://pypi.org/project/verinoda/" rel="noopener">PyPI</a></li>
+      <li><a href="https://www.npmjs.com/package/verinoda" rel="noopener">npm</a></li></ul></div>
+    <div><h4><span data-en>Community</span><span data-tr>Topluluk</span></h4><ul>
+      <li><a href="https://github.com/Verinoda-Labs" rel="noopener">GitHub</a></li>
+      <li><a href="https://github.com/Verinoda-Labs/verinoda/issues" rel="noopener"><span data-en>Issues &amp; feedback</span><span data-tr>Sorunlar ve geri bildirim</span></a></li></ul></div>
+  </div>
+  <div class="fine">
+    <span>© 2026 Verinoda Labs</span>
+    <span><span data-en>Verinoda builds on Graphify (MIT). Licensed under Apache-2.0.</span><span data-tr>Verinoda, Graphify (MIT) üzerine kuruludur. Apache-2.0 lisanslıdır.</span></span>
+  </div>
+</div></footer>
 
 <script>
 (function(){
