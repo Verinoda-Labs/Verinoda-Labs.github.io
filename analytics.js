@@ -4,25 +4,25 @@
 (function () {
   var TOKEN = '4890841dee1d81851378ca960a1db0be';
   var optedOut = navigator.doNotTrack === '1' || window.doNotTrack === '1' || navigator.globalPrivacyControl === true;
-  var queue = [], ready = false, failed = false;
 
   window.vlTrack = function (name, props) {
-    if (optedOut || failed) return;
-    if (ready) window.mixpanel.track(name, props || {});
-    else queue.push([name, props || {}]);
+    if (optedOut || !window.mixpanel) return;
+    try { window.mixpanel.track(name, props || {}); } catch (e) {}
   };
   if (optedOut) return;
+
+  /* Minimal stub of the official Mixpanel snippet: queues calls until the library loads and replays them. */
+  var mp = window.mixpanel = window.mixpanel || [];
+  mp._i = [];
+  mp.init = function (token, config, name) { mp._i.push([token, config, name || 'mixpanel']); };
+  mp.track = function () { mp.push(['track'].concat([].slice.call(arguments))); };
+  mp.__SV = 1.2;
+
+  mp.init(TOKEN, { persistence: 'localStorage', ip: false, ignore_dnt: false, track_pageview: false });
 
   var s = document.createElement('script');
   s.async = true;
   s.src = 'https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js';
-  s.onload = function () {
-    try {
-      window.mixpanel.init(TOKEN, { persistence: 'localStorage', ip: false, ignore_dnt: false, track_pageview: false });
-      ready = true;
-      queue.splice(0).forEach(function (q) { window.mixpanel.track(q[0], q[1]); });
-    } catch (e) { failed = true; queue = []; }
-  };
-  s.onerror = function () { failed = true; queue = []; };
+  s.onerror = function () { window.mixpanel = null; };
   document.head.appendChild(s);
 })();
