@@ -8,7 +8,7 @@
   var st = { lang: 'en', page: 'home', set: 0, inst: 0, topic: 0, copied: false, sent: false, err: '',
     form: { name: '', company: '', email: '', message: '' } };
   var app = document.getElementById('app');
-  var termTimer = null, copyTimer = null, io = null;
+  var lastTracked = null, termTimer = null, copyTimer = null, io = null;
 
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
@@ -171,6 +171,8 @@
   }
 
   /* ---------- render ---------- */
+  function track(n, p) { if (window.vlTrack) window.vlTrack(n, p); }
+
   function render() {
     var t = T(), body;
     if (st.page === 'home') body = home(t);
@@ -181,6 +183,7 @@
     app.innerHTML = nav(t) + '<main id="main">' + body + (st.page === 'contact' ? '' : cta(t)) + '</main>' + footer(t);
     document.documentElement.lang = st.lang;
     var names = { home: '', verinoda: 'Verinoda', symbiosis: 'Verinoda Symbiosis', benchmarks: t.nav.bench, install: t.nav.install, contact: t.nav.contact };
+    if (st.page !== lastTracked) { lastTracked = st.page; track('page_viewed', { page: st.page, language: st.lang }); }
     document.title = (names[st.page] ? names[st.page] + ' · ' : '') + 'Verinoda Labs';
     afterRender();
   }
@@ -243,11 +246,12 @@
     if (el.dataset.lang) {
       if (el.dataset.lang === st.lang) return;
       st.lang = el.dataset.lang;
+      track('language_changed', { language: st.lang, page: st.page });
       try { localStorage.setItem('vl-lang', st.lang); } catch (x) {}
       swap(render);
-    } else if (el.dataset.set !== undefined) { st.set = +el.dataset.set; render(); }
-    else if (el.dataset.inst !== undefined) { st.inst = +el.dataset.inst; st.copied = false; render(); }
-    else if (el.dataset.topic !== undefined) { st.topic = +el.dataset.topic; render(); }
+    } else if (el.dataset.set !== undefined) { st.set = +el.dataset.set; track('benchmark_set_selected', { set_index: st.set }); render(); }
+    else if (el.dataset.inst !== undefined) { st.inst = +el.dataset.inst; track('install_method_selected', { method: INSTALL[st.inst][0] }); st.copied = false; render(); }
+    else if (el.dataset.topic !== undefined) { st.topic = +el.dataset.topic; track('contact_topic_selected', { topic_index: st.topic }); render(); }
     else if (el.id === 'again') { st.sent = false; st.form = { name: '', company: '', email: '', message: '' }; render(); }
     else if (el.id === 'copy') {
       var done = function () {
@@ -255,7 +259,7 @@
         clearTimeout(copyTimer);
         copyTimer = setTimeout(function () { st.copied = false; var b = document.getElementById('copy'); if (b) b.textContent = T().install.copy; }, 1600);
       };
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(INSTALL[st.inst][1]).then(done, function () {});
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(INSTALL[st.inst][1]).then(function () { track('install_command_copied', { method: INSTALL[st.inst][0] }); done(); }, function () {});
     }
   });
 
@@ -277,6 +281,7 @@
     var url = CONTACT_EMAIL
       ? 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(text)
       : ISSUE_URL + '?title=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(text);
+    track('contact_form_submitted', { topic_index: st.topic, has_company: !!f.company, channel: CONTACT_EMAIL ? 'email' : 'github_issue' });
     window.open(url, CONTACT_EMAIL ? '_self' : '_blank', 'noopener');
     st.sent = true; st.err = '';
     render();
