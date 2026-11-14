@@ -18,11 +18,12 @@
     return '<a class="btn ' + cls + '" href="' + esc(href) + '"' + (x ? ' target="_blank" rel="noopener"' : '') + '><span>' + esc(label) + '</span><span class="ar" aria-hidden="true">' + (arrow || (x ? '↗' : '→')) + '</span></a>';
   }
   function stTag(w, t) {
-    var cls = w.status === 'live' ? 'live' : (w.status === 'beta' || w.status === 'early') ? 'acc' : '';
+    var cls = (w.status === 'live' || w.status === 'released') ? 'live' : (w.status === 'beta' || w.status === 'early') ? 'acc' : '';
     var label = t.status[w.status];
     if (w.ver && w.ver !== 'beta') label = w.status === 'beta' ? w.ver + ' · ' + label : label + ' · ' + w.ver;
     return '<span class="st ' + cls + '">' + esc(label) + '</span>';
   }
+  function nm(w) { return (st.lang === 'tr' && w.nameTr) || w.name; }
   function kindLabel(w, t) { return w.kind === 'app' ? t.cats[w.cat] : t.kinds[w.kind]; }
   function workHref(w) { return w.kind === 'tool' ? w.url : '#/work/' + w.id; }
   function lines(s) { return s.split(/(?<=\.)\s+/).map(function (l, i) { return '<span class="ln"><span style="--d:' + (i * 120) + 'ms">' + esc(l) + '</span></span>'; }).join(''); }
@@ -68,7 +69,7 @@
           '<div><strong>Verinoda</strong><p>' + esc(t.home.verinodaCell) + '</p></div><span class="go" aria-hidden="true">→</span></a>';
       }
       return '<a class="cell" href="' + workHref(w) + '" ' + d + '><div class="cell-h"><span class="st k">' + esc(kindLabel(w, t)) + '</span>' + stTag(w, t) + '</div>' +
-        '<strong>' + esc(w.short || w.name) + '</strong><span class="go" aria-hidden="true">→</span></a>';
+        '<strong>' + esc(w.short || nm(w)) + '</strong><span class="go" aria-hidden="true">→</span></a>';
     });
     cells += '<a class="cell next" href="#/contact" style="--d:' + (300 + WORKS.length * 45) + 'ms"><div class="cell-h"><span class="st k">' + esc(t.home.nextKind) + '</span><span class="st acc">?</span></div>' +
       '<strong>' + esc(t.home.nextName) + '</strong><span class="go" aria-hidden="true">→</span></a>';
@@ -106,8 +107,8 @@
 
       '<section class="band target" id="apps"><div class="wrap sec"><div class="sec-head" data-r><div><p class="meta kick">' + esc(t.apps.kicker) + '</p><h2>' + esc(t.apps.title) + '</h2></div><p class="lead">' + esc(t.apps.lead) + '</p></div>' +
       '<div class="cards">' + each(apps, function (w, i) {
-        var link = w.url ? '<span class="lnk">' + esc(w.urlKey === 'map' ? t.openMap : t.open) + ' ↗</span>' : '<span class="lock">' + esc(t.privateNote) + '</span>';
-        var inner = '<div class="cell-h"><span class="st k">' + esc(t.cats[w.cat]) + '</span>' + stTag(w, t) + '</div><h3>' + esc(w.name) + '</h3><p>' + esc(t.apps.items[w.id]) + '</p>' +
+        var link = w.url ? '<span class="lnk">' + esc(w.urlKey === 'map' ? t.openMap : w.urlKey === 'download' ? t.openDl : t.open) + ' ↗</span>' : '<span class="lock">' + esc(t.privateNote) + '</span>';
+        var inner = '<div class="cell-h"><span class="st k">' + esc(t.cats[w.cat]) + '</span>' + stTag(w, t) + '</div><h3>' + esc(nm(w)) + '</h3><p>' + esc(t.apps.items[w.id]) + '</p>' +
           '<div class="card-f"><span class="tech">' + esc(w.tech) + '</span>' + link + '</div>';
         var attrs = ' class="card target" id="w-' + w.id + '" data-r style="--d:' + (i % 4) * 70 + 'ms"';
         return w.url ? '<a' + attrs + ' href="' + esc(w.url) + '" target="_blank" rel="noopener">' + inner + '</a>' : '<article' + attrs + '>' + inner + '</article>';
