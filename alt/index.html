@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verinoda Labs — kanıtla çalışan işler</title>
+<meta name="description" content="Verinoda Labs: büyük kod tabanları için kanıt öncelikli Verinoda, Claude skilleri, Minecraft ve Roblox oyunları, tarayıcı ve masaüstü araçları.">
+<link rel="icon" href="../logo.svg" type="image/svg+xml">
+<link rel="canonical" href="https://verinoda-labs.github.io/alt/">
+<meta name="theme-color" content="#efece6">
+<meta property="og:title" content="Verinoda Labs">
+<meta property="og:description" content="On üç çalışan iş: Verinoda, Claude skilleri, oyunlar ve günlük araçlar.">
+<meta property="og:image" content="https://verinoda-labs.github.io/banner.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script>
+  // E0: motion tier - decide once, every effect reads it
+  window.agwTier = function () {
+    if (window.__agwTierCache) return window.__agwTierCache;
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var saveData = !!(navigator.connection && navigator.connection.saveData);
+    var gl = null, software = false;
+    try {
+      var c = document.createElement('canvas');
+      gl = c.getContext('webgl2') || c.getContext('webgl');
+      if (gl) {
+        var ext = gl.getExtension('WEBGL_debug_renderer_info');
+        var r = ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : '';
+        software = /swiftshader|basic render|llvmpipe|software/i.test(r);
+        var lose = gl.getExtension('WEBGL_lose_context'); if (lose) lose.loseContext();
+      }
+    } catch (e) { gl = null; }
+    var lowMem = (navigator.deviceMemory || 8) <= 2;
+    var small = matchMedia('(max-width: 760px)').matches;
+    var tier = (!gl || software || saveData) ? 'poster' : reduce ? 'still' : (lowMem || small) ? 'lite' : 'full';
+    var force = (location.search.match(/[?&]fx=(full|lite|still|poster)/) || [])[1]; if (force) tier = force;
+    document.documentElement.dataset.tier = tier;
+    return (window.__agwTierCache = tier);
+  };
+  document.documentElement.classList.add('js');
+</script>
+<style>
+:root {
+  --paper: #efece6;
+  --paper-2: #e6e2da;
+  --ink: #0f0e0c;
+  --ink-2: #2b2925;
+  --mute: #5f5a52;
+  --line: rgba(15, 14, 12, .14);
+  --line-2: rgba(15, 14, 12, .28);
+  --sig: #ff4a1c;
+  --sig-ink: #c2300b;
+  --ok: #157a46;
+  --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+  --m: clamp(20px, 4vw, 64px);
+  --s2: 16px; --s3: 24px; --s4: 40px; --s5: 64px; --s6: 104px; --s7: 168px;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --t: 240ms;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.55 var(--display); font-optical-sizing: auto; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
+h1, h2, h3 { margin: 0; font-weight: 750; letter-spacing: -.035em; line-height: .95; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+::selection { background: var(--sig); color: var(--paper); }
+:focus-visible { outline: 2px solid var(--sig); outline-offset: 3px; }
+.mono { font: 600 12px/1.35 var(--mono); letter-spacing: .04em; text-transform: uppercase; }
+.wrap { max-width: 1520px; margin: 0 auto; padding: 0 var(--m); }
+.skip { position: absolute; left: -999px; top: 8px; z-index: 90; background: var(--ink); color: var(--paper); padding: 8px 12px; }
+.skip:focus { left: 8px; }
+/* paper grid texture */
+.grid-bg { background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 64px 64px; background-position: -1px -1px; }
+
+/* nav */
+header.top { position: fixed; inset: 0 0 auto; z-index: 50; transition: background var(--t) var(--ease), border-color var(--t) var(--ease); border-bottom: 1px solid transparent; }
+header.top.solid { background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom-color: var(--line); }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); min-height: 68px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; letter-spacing: -.02em; min-height: 44px; white-space: nowrap; }
+.dot { width: 12px; height: 12px; border-radius: 50%; background: var(--sig); box-shadow: 0 0 0 4px rgba(255, 74, 28, .18); }
+.links { display: flex; gap: 28px; align-items: center; }
+.links a { font-size: 15px; font-weight: 600; padding: 8px 0; position: relative; }
+.links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 1.5px; background: var(--sig); transform: scaleX(0); transform-origin: left; transition: transform var(--t) var(--ease); }
+.links a:hover::after { transform: scaleX(1); }
+.right { display: flex; gap: 10px; align-items: center; }
+.lang { display: flex; border: 1.5px solid var(--ink); border-radius: 999px; overflow: hidden; }
+.lang button { border: 0; background: transparent; font: 600 12px/1 var(--mono); padding: 0 12px; min-height: 36px; cursor: pointer; }
+.lang button[aria-pressed=true] { background: var(--ink); color: var(--paper); }
+.pill { display: inline-flex; align-items: center; gap: 14px; min-height: 52px; padding: 0 22px; border-radius: 999px; font-weight: 700; font-size: 16px; border: 1.5px solid var(--ink); white-space: nowrap; transition: background var(--t) var(--ease), color var(--t) var(--ease), border-color var(--t) var(--ease), transform var(--t) var(--ease); }
+.pill .ar { display: inline-block; transition: transform var(--t) var(--ease); }
+.pill:hover .ar { transform: translateX(4px) rotate(var(--rot, 0deg)); }
+.pill.ink { background: var(--ink); color: var(--paper); }
+.pill.ink:hover { background: var(--sig); border-color: var(--sig); color: var(--ink); }
+.pill:not(.ink):hover { background: var(--ink); color: var(--paper); }
+.pill.sm { min-height: 44px; padding: 0 18px; font-size: 14px; }
+
+/* hero */
+.hero { position: relative; height: 100svh; min-height: 640px; overflow: hidden; }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.poster { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+.poster span { font-weight: 800; font-size: clamp(64px, 17vw, 300px); letter-spacing: -.06em; line-height: 1; color: var(--ink); }
+.poster span i { font-style: normal; color: var(--sig); }
+.poster .br { display: none; }
+.hero.is-live .poster { visibility: hidden; }
+.hero-tag, .it-b .tech, .blk span { text-transform: none; }
+.hero-tag { position: absolute; left: 50%; top: calc(50% + clamp(56px, 9vw, 150px)); transform: translateX(-50%); display: flex; gap: 14px; align-items: center; white-space: nowrap; color: var(--mute); }
+.hero-tag b { color: var(--ok); font-weight: 600; }
+.hero-tag::before { content: ""; width: 28px; height: 1px; background: var(--line-2); }
+.hero-tag::after { content: ""; width: 28px; height: 1px; background: var(--line-2); }
+.hero-foot { position: absolute; left: 0; right: 0; bottom: 0; padding-bottom: clamp(24px, 5vh, 48px); }
+.hero-foot .wrap { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s4); align-items: end; }
+.hero h1 { font-size: clamp(34px, 3.8vw, 64px); max-width: 15ch; margin-bottom: var(--s3); }
+.hero h1 em { font-style: normal; color: var(--sig-ink); }
+.hero .lead { color: var(--ink-2); max-width: 46ch; font-size: clamp(16px, 1.2vw, 19px); }
+.hero-r { display: flex; flex-direction: column; align-items: flex-end; gap: var(--s3); }
+.count { text-align: right; }
+.count b { display: block; font-size: clamp(64px, 7vw, 120px); font-weight: 800; letter-spacing: -.06em; line-height: .85; }
+.count span { color: var(--mute); }
+.hero-kick { position: absolute; top: 96px; left: 0; right: 0; }
+.hero-kick .wrap { display: flex; justify-content: space-between; gap: var(--s3); color: var(--mute); }
+.live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); margin-right: 8px; vertical-align: 1px; animation: pulse 2s infinite; }
+@keyframes pulse { 50% { opacity: .3; } }
+
+/* marquee */
+.marq { border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); background: var(--ink); color: var(--paper); overflow: hidden; }
+.marq-in { display: flex; width: max-content; animation: marq 48s linear infinite; }
+.marq:hover .marq-in { animation-play-state: paused; }
+.marq span { font-weight: 750; font-size: clamp(28px, 3.4vw, 54px); letter-spacing: -.035em; padding: 18px 0; white-space: nowrap; display: flex; align-items: center; }
+.marq span::after { content: "✳"; color: var(--sig); font-size: .6em; margin: 0 clamp(20px, 2.4vw, 40px); }
+@keyframes marq { to { transform: translateX(-50%); } }
+
+/* section heads */
+.sec { padding: var(--s6) 0; }
+.head { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: var(--s4); align-items: end; margin-bottom: var(--s5); }
+.head h2 { font-size: clamp(44px, 6.4vw, 112px); line-height: .9; letter-spacing: -.05em; }
+.head h2 em { font-style: normal; color: var(--sig-ink); }
+.head p { color: var(--ink-2); max-width: 40ch; }
+.kick { color: var(--sig-ink); margin-bottom: var(--s3); display: flex; gap: 10px; align-items: center; }
+.kick::before { content: ""; width: 8px; height: 8px; background: var(--sig); border-radius: 50%; }
+
+/* works index */
+.idx { border-top: 1.5px solid var(--ink); }
+.it { border-bottom: 1px solid var(--line-2); }
+.it-h { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto 44px; gap: var(--s3); align-items: center; width: 100%; padding: 14px 0; background: none; border: 0; text-align: left; cursor: pointer; position: relative; }
+.it-h::before { content: ""; position: absolute; inset: 0; background: var(--ink); transform: scaleY(0); transform-origin: bottom; transition: transform 420ms var(--ease); z-index: 0; }
+.it-h > * { position: relative; z-index: 1; transition: color 300ms var(--ease), transform 420ms var(--ease); }
+.it-h .n { color: var(--mute); }
+.it-h .nm { font-weight: 750; font-size: clamp(32px, 5.4vw, 92px); letter-spacing: -.045em; line-height: 1; overflow-wrap: anywhere; }
+.it-h .mt { display: flex; gap: 14px; align-items: center; justify-content: flex-end; text-align: right; color: var(--mute); }
+.st { display: inline-flex; align-items: center; gap: 6px; border: 1px solid currentColor; border-radius: 999px; padding: 5px 10px; white-space: nowrap; }
+.st.live { color: var(--ok); }
+.st.live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.st.acc { color: var(--sig-ink); }
+.it-h .pl { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid currentColor; display: grid; place-items: center; font-size: 20px; transition: transform 420ms var(--ease), color 300ms var(--ease), background 300ms; }
+@media (hover: hover) {
+  .it-h:hover::before { transform: scaleY(1); }
+  .it-h:hover > * { color: var(--paper); }
+  .it-h:hover .nm { transform: translateX(14px); }
+  .it-h:hover .st { color: var(--paper); }
+  .it-h:hover .pl { background: var(--sig); border-color: var(--sig); color: var(--ink); }
+}
+.it.open .pl { transform: rotate(45deg); }
+.it-b { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 520ms var(--ease); }
+.it.open .it-b { grid-template-rows: 1fr; }
+.it-b > div { overflow: hidden; }
+.it-b .in { display: grid; grid-template-columns: 64px minmax(0, 6fr) minmax(0, 4fr); gap: var(--s3); padding: var(--s2) 0 var(--s4); }
+.it-b p { font-size: clamp(18px, 1.5vw, 22px); line-height: 1.45; max-width: 52ch; }
+.it-b .side { display: flex; flex-direction: column; gap: var(--s2); align-items: flex-start; }
+.it-b .tech { color: var(--mute); }
+.it-b .lock { color: var(--mute); }
+.idx-foot { display: flex; justify-content: space-between; gap: var(--s3); flex-wrap: wrap; align-items: center; margin-top: var(--s4); color: var(--mute); }
+
+/* floating preview (pointer:fine) */
+.peek { position: fixed; left: 0; top: 0; z-index: 40; width: 300px; pointer-events: none; opacity: 0; transform: translate3d(-50%, -50%, 0) scale(.92); transition: opacity 240ms var(--ease), transform 240ms var(--ease); }
+.peek.on { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); }
+.peek .card { background: var(--sig); color: var(--ink); padding: 18px; border-radius: 18px; box-shadow: 0 30px 60px -20px rgba(15, 14, 12, .45); aspect-ratio: 4 / 5; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; position: relative; }
+.peek .glyph { position: absolute; right: -10px; bottom: -40px; font-weight: 800; font-size: 260px; letter-spacing: -.08em; line-height: 1; opacity: .16; }
+.peek .k { display: flex; justify-content: space-between; }
+.peek b { font-size: 30px; letter-spacing: -.04em; line-height: 1; font-weight: 800; position: relative; }
+
+/* verinoda */
+.vn { background: var(--ink); color: var(--paper); position: relative; overflow: hidden; }
+.vn .kick { color: var(--sig); }
+.vn .head p { color: #c9c4ba; }
+.scale { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s5); align-items: center; }
+.big-n { font-weight: 800; font-size: clamp(110px, 17vw, 300px); letter-spacing: -.07em; line-height: .8; }
+.big-n small { font-size: .32em; letter-spacing: -.04em; color: var(--sig); margin-left: 6px; }
+.scale-copy p { color: #c9c4ba; max-width: 42ch; margin-top: var(--s3); font-size: clamp(17px, 1.3vw, 20px); }
+.scale-copy strong { color: var(--paper); font-weight: 650; }
+.blocks { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.blk { aspect-ratio: 1; border: 1px solid rgba(239, 236, 230, .2); border-radius: 6px; position: relative; opacity: 0; transform: scale(.6); transition: opacity 500ms var(--ease), transform 600ms var(--ease), background 500ms; transition-delay: var(--d); }
+.blocks.in .blk { opacity: 1; transform: none; }
+.blk.ctx { background: var(--sig); border-color: var(--sig); }
+.blk span { position: absolute; left: 7px; top: 6px; font: 600 12px/1 var(--mono); color: rgba(239, 236, 230, .45); }
+.blk.ctx span { color: var(--ink); }
+.legend { display: flex; gap: var(--s3); flex-wrap: wrap; margin-top: var(--s2); color: #a9a397; }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 8px; vertical-align: -1px; }
+.term { margin-top: var(--s6); display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s5); align-items: start; }
+.shell { background: #050504; border: 1px solid rgba(239, 236, 230, .16); border-radius: 14px; overflow: hidden; }
+.shell-bar { display: flex; gap: 7px; padding: 14px 16px; border-bottom: 1px solid rgba(239, 236, 230, .1); }
+.shell-bar i { width: 10px; height: 10px; border-radius: 50%; background: #3a3833; }
+.shell-bar i:first-child { background: var(--sig); }
+.shell pre { margin: 0; padding: 22px 22px 26px; font: 14px/1.8 var(--mono); color: #d8d3c9; overflow-x: auto; min-height: 290px; }
+.shell .c { color: var(--paper); } .shell .g { color: #63d996; } .shell .y { color: #f4c470; } .shell .d { color: #6d685f; }
+.shell .cur { display: inline-block; width: 9px; height: 1.1em; background: var(--sig); vertical-align: -3px; animation: pulse 1s steps(1) infinite; }
+.bars { display: grid; gap: var(--s3); }
+.bars h3 { font-size: 22px; letter-spacing: -.02em; line-height: 1.2; }
+.bar-t { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; color: #c9c4ba; font-size: 15px; gap: 12px; }
+.bar-t b { color: var(--paper); font-size: 36px; letter-spacing: -.04em; font-weight: 800; }
+.bar-t b small { font-size: 14px; color: #8c867b; font-weight: 600; letter-spacing: 0; }
+.track { height: 12px; background: rgba(239, 236, 230, .08); border-radius: 999px; overflow: hidden; }
+.fill { height: 100%; width: 0; background: #8c867b; border-radius: 999px; transition: width 1400ms var(--ease); }
+.fill.v { background: var(--sig); }
+.note { color: #8c867b; font-size: 14px; }
+.vn .pill { border-color: var(--paper); }
+.vn .pill.ink { background: var(--paper); color: var(--ink); }
+.vn .pill.ink:hover { background: var(--sig); border-color: var(--sig); }
+.vn .pill:not(.ink):hover { background: var(--paper); color: var(--ink); }
+
+/* skills */
+.sk { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s3); }
+.sk-c { border: 1.5px solid var(--ink); border-radius: 22px; padding: var(--s4) var(--s3) var(--s3); min-height: 440px; display: flex; flex-direction: column; gap: var(--s3); background: var(--paper); transition: transform 420ms var(--ease), box-shadow 420ms var(--ease), background 300ms; }
+.sk-c:hover { transform: translateY(-8px) rotate(-.6deg); box-shadow: 0 30px 50px -30px rgba(15, 14, 12, .5); background: #f6f4ef; }
+.sk-c:nth-child(2):hover { transform: translateY(-8px) rotate(.6deg); }
+.sk-c .top { display: flex; justify-content: space-between; color: var(--mute); }
+.sk-c h3 { font-size: clamp(30px, 2.8vw, 46px); letter-spacing: -.045em; overflow-wrap: anywhere; margin-top: auto; }
+.sk-c p { color: var(--ink-2); font-size: 16px; }
+.sk-c .ver { font-size: clamp(56px, 6vw, 96px); font-weight: 800; letter-spacing: -.06em; line-height: .8; color: var(--sig-ink); }
+
+/* way strip */
+.way { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1.5px solid var(--ink); }
+.way div { padding: var(--s4) var(--s3) 0 0; }
+.way div + div { padding-left: var(--s3); border-left: 1px solid var(--line-2); }
+.way h3 { font-size: 24px; letter-spacing: -.025em; line-height: 1.15; margin-bottom: 12px; }
+.way p { color: var(--ink-2); font-size: 16px; }
+
+/* final */
+.end { background: var(--sig); color: var(--ink); position: relative; overflow: hidden; }
+.end .wrap { padding-top: var(--s7); padding-bottom: var(--s5); }
+.end h2 { font-size: clamp(64px, 13vw, 240px); line-height: .82; letter-spacing: -.065em; max-width: 9ch; }
+.end-row { display: flex; justify-content: space-between; align-items: end; gap: var(--s4); flex-wrap: wrap; margin-top: var(--s5); padding-top: var(--s4); border-top: 1.5px solid var(--ink); }
+.end-row p { max-width: 44ch; font-size: clamp(17px, 1.3vw, 20px); }
+.end .pill.ink:hover { background: var(--paper); border-color: var(--paper); color: var(--ink); }
+.end .pill:not(.ink):hover { background: var(--ink); color: var(--sig); }
+footer { background: var(--ink); color: #b9b3a8; }
+.foot { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 5fr) minmax(0, 4fr); gap: var(--s4); padding-top: var(--s5); padding-bottom: var(--s5); font-size: 14px; }
+.foot .brand { color: var(--paper); }
+.foot nav { display: flex; flex-wrap: wrap; gap: 0 26px; }
+.foot nav a { min-width: 44px; }
+.foot nav a { min-height: 44px; display: inline-flex; align-items: center; transition: color var(--t); }
+.foot nav a:hover { color: var(--sig); }
+
+/* reveal */
+.js [data-r] { opacity: 0; transform: translate3d(0, 36px, 0); transition: opacity 900ms var(--ease), transform 900ms var(--ease); transition-delay: var(--d, 0ms); }
+.js [data-r].in { opacity: 1; transform: none; }
+.js .split .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .06em; margin-bottom: -.06em; }
+.js .split .w > span { display: inline-block; transform: translate3d(0, 110%, 0); transition: transform 1000ms var(--ease); transition-delay: var(--d, 0ms); }
+.js .split.in .w > span { transform: none; }
+.js .hero-foot, .js .hero-kick, .js .hero-tag { opacity: 0; transition: opacity 1200ms var(--ease) 900ms; }
+.js .hero.ready .hero-foot, .js .hero.ready .hero-kick, .js .hero.ready .hero-tag { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 1ms !important; transition-delay: 0ms !important; animation: none !important; }
+  .js [data-r], .blk { opacity: 1; transform: none; }
+  .js .split .w > span { transform: none; }
+  .js .hero-foot, .js .hero-kick, .js .hero-tag { opacity: 1; }
+}
+
+@media (max-width: 1100px) {
+  .links { display: none; }
+  .scale, .term, .head { grid-template-columns: minmax(0, 1fr); }
+  .sk { grid-template-columns: minmax(0, 1fr); }
+  .sk-c { min-height: 0; }
+  .sk-c h3 { margin-top: var(--s3); }
+}
+@media (max-width: 760px) {
+  :root { --s6: 72px; --s7: 112px; --s5: 44px; }
+  .hero { min-height: 700px; }
+  .right .pill { display: none; }
+  .poster { place-items: start center; padding-top: 150px; }
+  .poster .br { display: inline; }
+  .poster span { font-size: 31vw; line-height: .88; text-align: center; }
+  html[data-tier=poster] .hero-tag { top: 395px; }
+  .hero-kick { top: 84px; }
+  .hero-kick .wrap > :last-child { display: none; }
+  .hero-tag { top: calc(42% + 40px); font-size: 12px; gap: 8px; }
+  .hero-tag::before, .hero-tag::after { width: 14px; }
+  .hero-foot .wrap { grid-template-columns: minmax(0, 1fr); gap: var(--s3); }
+  .hero h1 { font-size: 34px; margin-bottom: 14px; }
+  .hero-r { flex-direction: row; justify-content: space-between; align-items: center; }
+  .count { text-align: left; }
+  .count b { font-size: 56px; }
+  .pill { min-height: 48px; padding: 0 18px; font-size: 15px; }
+  .it-h { grid-template-columns: 30px minmax(0, 1fr) 40px; gap: 12px; }
+  .it-h .mt { grid-column: 2; grid-row: 2; justify-content: flex-start; flex-wrap: wrap; gap: 8px; }
+  .it-h .pl { grid-column: 3; grid-row: 1 / span 2; width: 40px; height: 40px; }
+  .it-b .in { grid-template-columns: minmax(0, 1fr); padding-left: 42px; }
+  .blocks { gap: 5px; }
+  .way { grid-template-columns: minmax(0, 1fr); }
+  .way div, .way div + div { padding: var(--s3) 0; border-left: 0; border-bottom: 1px solid var(--line-2); }
+  .foot { grid-template-columns: minmax(0, 1fr); }
+  .shell pre { font-size: 12px; min-height: 0; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#works">İçeriğe geç</a>
+<header class="top" id="top">
+  <div class="wrap nav">
+    <a class="brand" href="#hero"><span class="dot"></span>Verinoda Labs</a>
+    <nav class="links" aria-label="Ana menü">
+      <a href="#works" data-i="nWorks">İşler</a>
+      <a href="#verinoda">Verinoda</a>
+      <a href="#skills" data-i="nSkills">Skiller</a>
+      <a href="../" data-i="nClassic">Klasik site</a>
+    </nav>
+    <div class="right">
+      <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="false">EN</button><button type="button" data-lang="tr" aria-pressed="true">TR</button></div>
+      <a class="pill ink sm" href="../#/contact" data-i="nContact">Bize ulaşın</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero grid-bg" id="hero" aria-label="Verinoda Labs">
+  <div class="poster" aria-hidden="true"><span>VERI<br class="br">NOD<i>A</i></span></div>
+  <div class="hero-kick"><div class="wrap mono"><span><span class="live-dot"></span><span data-i="kick">Verinoda Labs · 2026 sonbaharı</span></span><span data-i="kick2">kanıt öncelikli · EN / TR</span></div></div>
+  <p class="hero-tag mono" aria-hidden="true"><span>labs/verinoda.py:13</span><b>statically_verified</b></p>
+  <div class="hero-foot"><div class="wrap">
+    <div>
+      <h1 class="split" data-i="h1">Kanıtla çalışan araçlar. <em>Oynanan oyunlar.</em></h1>
+      <p class="lead" data-i="lead">Büyük kod tabanları için Verinoda, Claude skilleri, Minecraft ve Roblox oyunları, tarayıcıda ve masaüstünde çalışan günlük araçlar.</p>
+    </div>
+    <div class="hero-r">
+      <div class="count"><b id="count">13</b><span class="mono" data-i="countL">çalışan iş</span></div>
+      <a class="pill ink" href="#works" style="--rot:90deg"><span data-i="cta1">İşleri gör</span><span class="ar" aria-hidden="true">→</span></a>
+    </div>
+  </div></div>
+</section>
+
+<div class="marq" aria-hidden="true"><div class="marq-in" id="marq"></div></div>
+
+<section class="sec" id="works">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="kick mono" data-i="wKick">İşler · 13</p><h2 class="split" data-i="wTitle">Hepsi <em>çalışıyor.</em> Birine dokunun.</h2></div>
+      <p data-r data-i="wLead">Sürüm numaraları ve durum etiketleri her işin ne kadar ilerlediğini söyler. Açık olanları hemen deneyin.</p>
+    </div>
+    <div class="idx" id="idx"></div>
+    <div class="idx-foot" data-r><span class="mono" data-i="wFoot">Özel repolar için erişim isteyin</span><a class="pill" href="../#/contact"><span data-i="wFootCta">Benzerini yaptırın</span><span class="ar" aria-hidden="true">→</span></a></div>
+  </div>
+</section>
+
+<section class="vn sec" id="verinoda">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="kick mono" data-i="vKick">Amiral gemisi · Verinoda 0.5.0</p><h2 class="split" data-i="vTitle">Bağlam 1 milyon token. Kod tabanınız <em>20 milyon.</em></h2></div>
+      <p data-r data-i="vLead">Verinoda depoyu ajanın okuduğu biçimde haritalar. Her cevap, durumu ve dayandığı tam file:line ile bir iddiadır; desteklenemeyen şey “bilinmiyor” olarak döner.</p>
+    </div>
+    <div class="scale">
+      <div class="scale-copy" data-r>
+        <div class="big-n">20<small>M</small></div>
+        <p data-i="vScale"><strong>Asıl farkını burada gösterir:</strong> 1 milyon token bağlamını fazlasıyla aşan, 10–20 milyon tokenlık projeler. Ajan dosyaları tek tek okuyamaz; Verinoda kanıtı getirir.</p>
+      </div>
+      <div data-r style="--d:120ms">
+        <div class="blocks" id="blocks"></div>
+        <div class="legend mono"><span><i style="background:var(--sig)"></i><span data-i="lg1">1M token bağlam penceresi</span></span><span><i style="border:1px solid rgba(239,236,230,.35)"></i><span data-i="lg2">her kare 1M token kod</span></span></div>
+      </div>
+    </div>
+    <div class="term">
+      <div class="shell" data-r aria-hidden="true"><div class="shell-bar"><i></i><i></i><i></i></div><pre id="shell"></pre></div>
+      <div class="bars" data-r style="--d:120ms" id="bars">
+        <h3 data-i="bTitle">86 soru, bilinen 319 bilgi: kim kaçını buldu?</h3>
+        <div><div class="bar-t"><b>285 <small>/ 319</small></b><span>Verinoda query · 1.310 tok/soru</span></div><div class="track"><div class="fill v" data-w="89.3"></div></div></div>
+        <div><div class="bar-t"><b>129 <small>/ 319</small></b><span data-i="bPlain">düz arama · 3.991 tok/soru</span></div><div class="track"><div class="fill" data-w="40.4"></div></div></div>
+        <div><div class="bar-t"><b>69 <small>/ 319</small></b><span>Graphify · 1.391 tok/soru</span></div><div class="track"><div class="fill" data-w="21.6"></div></div></div>
+        <p class="note" data-i="bNote">Yalnız getirme, döngüde model yok; setlerin çoğu iç örneklem. Model döngüdeyken yapılan çalışmalar ve tüm notlar README’de.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <a class="pill ink" href="../#/verinoda"><span data-i="vCta1">Verinoda’yı incele</span><span class="ar" aria-hidden="true">→</span></a>
+          <a class="pill" href="https://github.com/Verinoda-Labs/verinoda" target="_blank" rel="noopener"><span>GitHub</span><span class="ar" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="skills">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="kick mono" data-i="sKick">Claude skilleri · 3</p><h2 class="split" data-i="sTitle">Claude’a tek işi <em>çok iyi</em> yaptırır.</h2></div>
+      <p data-r data-i="sLead">Her biri sürümlü ve bu site dahil kendi projelerimizde kullanılıyor. Repolar özel; erişim için yazın.</p>
+    </div>
+    <div class="sk" id="sk"></div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap way" id="way"></div>
+</section>
+
+<section class="end">
+  <div class="wrap">
+    <h2 class="split" data-i="endT">Sıradaki sizin olsun.</h2>
+    <div class="end-row">
+      <p data-i="endB">Kod tabanınız için bir araç, ekibiniz için bir skill, bir oyun ya da bir site. Neye ihtiyacınız olduğunu yazın.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="pill ink" href="../#/contact"><span data-i="nContact">Bize ulaşın</span><span class="ar" aria-hidden="true">→</span></a>
+        <a class="pill" href="https://github.com/Verinoda-Labs" target="_blank" rel="noopener"><span>GitHub</span><span class="ar" aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div><a class="brand" href="#hero"><span class="dot"></span>Verinoda Labs</a><p class="mono" style="margin-top:12px">© 2026</p></div>
+    <nav aria-label="Alt menü"><a href="#works" data-i="nWorks">İşler</a><a href="../#/verinoda">Verinoda</a><a href="../#/symbiosis">Symbiosis</a><a href="../#/install" data-i="nInstall">Kurulum</a><a href="../#/contact" data-i="nContact">Bize ulaşın</a><a href="../" data-i="nClassic">Klasik site</a><a href="https://github.com/Verinoda-Labs" target="_blank" rel="noopener">GitHub ↗</a><a href="https://pypi.org/project/verinoda/" target="_blank" rel="noopener">PyPI ↗</a></nav>
+    <p data-i="fNote">Verinoda, Graphify’dan (Apache-2.0) türetilmiş bağımsız bir projedir; resmî bir Graphify sürümü değildir.</p>
+  </div>
+</footer>
+
+<div class="peek" id="peek" aria-hidden="true"><div class="card"><div class="k mono"><span id="pk-k"></span><span id="pk-s"></span></div><span class="glyph" id="pk-g"></span><b id="pk-n"></b></div></div>
+
+<script src="../data.js"></script>
+<script>
+(function () {
+  'use strict';
+  var COPY = {
+    tr: {
+      nWorks: 'İşler', nSkills: 'Skiller', nClassic: 'Klasik site', nContact: 'Bize ulaşın', nInstall: 'Kurulum',
+      kick: 'Verinoda Labs · 2026 sonbaharı', kick2: 'kanıt öncelikli · EN / TR',
+      h1: 'Kanıtla çalışan araçlar. <em>Oynanan oyunlar.</em>',
+      lead: 'Büyük kod tabanları için Verinoda, Claude skilleri, Minecraft ve Roblox oyunları, tarayıcıda ve masaüstünde çalışan günlük araçlar.',
+      countL: 'çalışan iş', cta1: 'İşleri gör',
+      wKick: 'İşler · 13', wTitle: 'Hepsi <em>çalışıyor.</em> Birine dokunun.',
+      wLead: 'Sürüm numaraları ve durum etiketleri her işin ne kadar ilerlediğini söyler. Açık olanları hemen deneyin.',
+      wFoot: 'Özel repolar için erişim isteyin', wFootCta: 'Benzerini yaptırın',
+      vKick: 'Amiral gemisi · Verinoda 0.5.0', vTitle: 'Bağlam 1 milyon token. Kod tabanınız <em>20 milyon.</em>',
+      vLead: 'Verinoda depoyu ajanın okuduğu biçimde haritalar. Her cevap, durumu ve dayandığı tam file:line ile bir iddiadır; desteklenemeyen şey “bilinmiyor” olarak döner.',
+      vScale: '<strong>Asıl farkını burada gösterir:</strong> 1 milyon token bağlamını fazlasıyla aşan, 10–20 milyon tokenlık projeler. Ajan dosyaları tek tek okuyamaz; Verinoda kanıtı getirir.',
+      lg1: '1M token bağlam penceresi', lg2: 'her kare 1M token kod',
+      bTitle: '86 soru, bilinen 319 bilgi: kim kaçını buldu?', bPlain: 'düz arama · 3.991 tok/soru',
+      bNote: 'Yalnız getirme, döngüde model yok; setlerin çoğu iç örneklem. Model döngüdeyken yapılan çalışmalar ve tüm notlar README’de.',
+      vCta1: 'Verinoda’yı incele',
+      sKick: 'Claude skilleri · 3', sTitle: 'Claude’a tek işi <em>çok iyi</em> yaptırır.',
+      sLead: 'Her biri sürümlü ve bu site dahil kendi projelerimizde kullanılıyor. Repolar özel; erişim için yazın.',
+      endT: 'Sıradaki sizin olsun.', endB: 'Kod tabanınız için bir araç, ekibiniz için bir skill, bir oyun ya da bir site. Neye ihtiyacınız olduğunu yazın.',
+      fNote: 'Verinoda, Graphify’dan (Apache-2.0) türetilmiş bağımsız bir projedir; resmî bir Graphify sürümü değildir.',
+      title: 'Verinoda Labs — kanıtla çalışan işler', skip: 'İçeriğe geç'
+    },
+    en: {
+      nWorks: 'Work', nSkills: 'Skills', nClassic: 'Classic site', nContact: 'Talk to us', nInstall: 'Install',
+      kick: 'Verinoda Labs · autumn 2026', kick2: 'evidence first · EN / TR',
+      h1: 'Tools that work from evidence. <em>Games people play.</em>',
+      lead: 'Verinoda for large codebases, Claude skills, Minecraft and Roblox games, and everyday tools for the browser and the desktop.',
+      countL: 'working projects', cta1: 'See the work',
+      wKick: 'Work · 13', wTitle: 'All of it <em>works.</em> Touch one.',
+      wLead: 'Version numbers and status tags say exactly how far each one is. The public ones you can try right now.',
+      wFoot: 'Ask for access to the private repositories', wFootCta: 'Get one built',
+      vKick: 'Flagship · Verinoda 0.5.0', vTitle: 'Your context is 1 million tokens. Your codebase is <em>20 million.</em>',
+      vLead: 'Verinoda maps a repository the way an agent reads it. Every answer is a claim with a status and the exact file:line it rests on; what cannot be supported comes back as unknown.',
+      vScale: '<strong>This is where it makes the real difference:</strong> projects far past a 1-million-token context, 10 to 20 million tokens of code. The agent cannot read every file; Verinoda brings the evidence.',
+      lg1: '1M-token context window', lg2: 'each square: 1M tokens of code',
+      bTitle: '86 questions, 319 known facts: who found how many?', bPlain: 'plain search · 3,991 tok/question',
+      bNote: 'Retrieval only, no model in the loop; most sets are in-sample. The with-model studies and every caveat are in the README.',
+      vCta1: 'Explore Verinoda',
+      sKick: 'Claude skills · 3', sTitle: 'Make Claude do one job <em>very well.</em>',
+      sLead: 'Each one is versioned and in use on our own projects, including this site. The repositories are private; write for access.',
+      endT: 'Make the next one yours.', endB: 'A tool for your codebase, a skill for your team, a game or a site. Tell us what you need.',
+      fNote: 'Verinoda is derived from Graphify (Apache-2.0) and is an independent project, not an official Graphify release.',
+      title: 'Verinoda Labs — work that runs on evidence', skip: 'Skip to content'
+    }
+  };
+  var SHELL = [
+    ['c', '$ verinoda analyze "How does an order reach the database?"'], ['d', ''],
+    ['', 'claim    create_order_handler → OrderRepository.save'], ['g', 'status   statically_verified'], ['', 'evidence orders/service.py:22'], ['d', ''],
+    ['', 'claim    discount threshold read from config'], ['y', 'status   unknown · next check: verinoda trace'], ['d', ''],
+    ['g', 'verdict  met_with_inference']
+  ];
+  var GLYPH = { tool: 'V', skill: '✳', minecraft: '▦', roblox: '◼', web: '◎', edu: '❋', desktop: '▭' };
+  var lang = 'tr', reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  try { var sv = localStorage.getItem('vl-lang'); if (sv === 'en' || sv === 'tr') lang = sv; else if (!(navigator.language || '').toLowerCase().startsWith('tr')) lang = 'en'; } catch (e) {}
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function nm(w) { return (lang === 'tr' && w.nameTr) || w.name; }
+  function desc(w, t) { return w.kind === 'tool' ? t.product[w.id].lead : w.kind === 'skill' ? t.skills.items[w.id] : t.apps.items[w.id]; }
+  function kindL(w, t) { return w.kind === 'app' ? t.cats[w.cat] : t.kinds[w.kind]; }
+  function stHtml(w, t) {
+    var cls = (w.status === 'live' || w.status === 'released') ? 'live' : (w.status === 'beta' || w.status === 'early') ? 'acc' : '';
+    var l = t.status[w.status]; if (w.ver && w.ver !== 'beta') l = w.status === 'beta' ? w.ver + ' · ' + l : l + ' · ' + w.ver;
+    return '<span class="st mono ' + cls + '">' + esc(l) + '</span>';
+  }
+  function linkFor(w) { if (w.kind === 'tool') return '../' + w.url; return w.url; }
+  function linkLabel(w, t) { if (w.kind === 'tool') return t.details; return w.urlKey === 'map' ? t.openMap : w.urlKey === 'download' ? t.openDl : t.open; }
+  // word-split for headline reveals (keeps <em>)
+  function split(el) {
+    var html = el.innerHTML, out = '', i = 0, d = 0;
+    var tokens = html.split(/(<em>|<\/em>|\s+)/).filter(function (x) { return x !== ''; });
+    tokens.forEach(function (tk) {
+      if (tk === '<em>' || tk === '</em>') out += tk;
+      else if (/^\s+$/.test(tk)) out += ' ';
+      else { out += '<span class="w"><span style="--d:' + (d * 60) + 'ms">' + tk + '</span></span>'; d++; }
+    });
+    el.innerHTML = out;
+  }
+
+  function render() {
+    var t = I18N[lang], c = COPY[lang];
+    document.documentElement.lang = lang; document.title = c.title;
+    document.querySelector('.skip').textContent = c.skip;
+    document.querySelectorAll('[data-i]').forEach(function (el) { var k = el.getAttribute('data-i'); if (c[k] != null) el.innerHTML = c[k]; });
+    document.querySelectorAll('[data-lang]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang); });
+    // marquee
+    var names = WORKS.map(function (w) { return '<span>' + esc(nm(w)) + '</span>'; }).join('');
+    document.getElementById('marq').innerHTML = names + names;
+    // index
+    document.getElementById('idx').innerHTML = WORKS.map(function (w, i) {
+      var u = linkFor(w), ext = /^https?:/.test(u || '');
+      var act = u ? '<a class="pill ink sm" href="' + esc(u) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '><span>' + esc(linkLabel(w, t)) + '</span><span class="ar" aria-hidden="true">' + (ext ? '↗' : '→') + '</span></a>' : '<span class="lock mono">' + esc(t.privateNote) + '</span>';
+      return '<div class="it" data-r data-id="' + w.id + '"><button type="button" class="it-h" aria-expanded="false" aria-controls="b-' + w.id + '">' +
+        '<span class="n mono">' + String(i + 1).padStart(2, '0') + '</span><span class="nm">' + esc(nm(w)) + '</span>' +
+        '<span class="mt"><span class="mono">' + esc(kindL(w, t)) + '</span>' + stHtml(w, t) + '</span><span class="pl" aria-hidden="true">+</span></button>' +
+        '<div class="it-b" id="b-' + w.id + '"><div><div class="in"><span></span><p>' + esc(desc(w, t)) + '</p><div class="side"><span class="tech mono">' + esc(w.tech) + '</span>' + act + '</div></div></div></div></div>';
+    }).join('');
+    // skills
+    document.getElementById('sk').innerHTML = WORKS.filter(function (w) { return w.kind === 'skill'; }).map(function (w, i) {
+      return '<article class="sk-c" data-r style="--d:' + i * 90 + 'ms"><div class="top mono"><span>0' + (i + 1) + ' · ' + esc(t.kinds.skill) + '</span><span>' + esc(t.status.private) + '</span></div>' +
+        '<div class="ver">' + esc(w.ver) + '</div><h3>' + esc(w.name) + '</h3><p>' + esc(t.skills.items[w.id]) + '</p>' +
+        '<a class="pill sm" href="../#/contact" style="align-self:flex-start"><span>' + esc(t.skills.access) + '</span><span class="ar" aria-hidden="true">→</span></a></article>';
+    }).join('');
+    document.getElementById('way').innerHTML = t.way.items.map(function (w, i) { return '<div data-r style="--d:' + i * 90 + 'ms"><h3>' + esc(w.t) + '</h3><p>' + esc(w.b) + '</p></div>'; }).join('');
+    // blocks
+    var bl = ''; for (var b = 0; b < 20; b++) bl += '<div class="blk' + (b === 0 ? ' ctx' : '') + '" style="--d:' + (b * 45) + 'ms"><span>' + (b + 1) + 'M</span></div>';
+    var blocks = document.getElementById('blocks'), wasIn = blocks.classList.contains('in'); blocks.innerHTML = bl; if (wasIn) blocks.classList.add('in');
+    document.querySelectorAll('.split').forEach(split);
+    observe(true);
+  }
+
+  // reveals
+  var io;
+  function observe(again) {
+    if (io) io.disconnect();
+    var els = document.querySelectorAll('[data-r], .split, #blocks, #bars, .shell');
+    if (reduce || !('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); fill(); typeShell(true); return; }
+    io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return; e.target.classList.add('in'); io.unobserve(e.target);
+        if (e.target.id === 'bars') fill();
+        if (e.target.classList.contains('shell')) typeShell(false);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.06 });
+    els.forEach(function (e) { if (!e.closest('.hero')) io.observe(e); });
+  }
+  function fill() { document.querySelectorAll('.fill').forEach(function (f) { f.style.width = f.getAttribute('data-w') + '%'; }); }
+  var typed = false;
+  function typeShell(all) {
+    var pre = document.getElementById('shell');
+    var lines = SHELL.map(function (l) { return '<span class="' + l[0] + '">' + (esc(l[1]) || ' ') + '</span>'; });
+    if (all || typed) { pre.innerHTML = lines.join('\n'); return; }
+    typed = true; var i = 0;
+    (function step() { pre.innerHTML = lines.slice(0, i).join('\n') + (i < lines.length ? '\n<span class="cur"></span>' : ''); if (i++ < lines.length) setTimeout(step, i === 1 ? 600 : 240); })();
+  }
+
+  // accordion + peek
+  var peek = document.getElementById('peek'), fine = matchMedia('(hover: hover) and (pointer: fine)').matches, px = 0, py = 0, tx = 0, ty = 0;
+  document.addEventListener('click', function (e) {
+    var h = e.target.closest('.it-h');
+    if (h) { var it = h.parentElement, open = !it.classList.contains('open'); it.classList.toggle('open', open); h.setAttribute('aria-expanded', open); return; }
+    var lb = e.target.closest('[data-lang]');
+    if (lb) { lang = lb.getAttribute('data-lang'); try { localStorage.setItem('vl-lang', lang); } catch (x) {} typed = false; render(); typeShell(true); fill(); return; }
+  });
+  if (fine) {
+    document.addEventListener('pointermove', function (e) {
+      tx = e.clientX; ty = e.clientY;
+      var it = e.target.closest && e.target.closest('.it-h');
+      if (it && !it.parentElement.classList.contains('open')) {
+        var w = WORKS.filter(function (x) { return x.id === it.parentElement.getAttribute('data-id'); })[0], t = I18N[lang];
+        if (peek.dataset.id !== w.id) {
+          peek.dataset.id = w.id;
+          document.getElementById('pk-k').textContent = kindL(w, t); document.getElementById('pk-s').textContent = t.status[w.status];
+          document.getElementById('pk-n').textContent = nm(w); document.getElementById('pk-g').textContent = GLYPH[w.kind === 'app' ? w.cat : w.kind];
+        }
+        peek.classList.add('on');
+      } else peek.classList.remove('on');
+    });
+    (function loop() { px += (tx + 200 - px) * .14; py += (ty - py) * .14; peek.style.left = px + 'px'; peek.style.top = py + 'px'; requestAnimationFrame(loop); })();
+  }
+
+  // header state
+  var hdr = document.getElementById('top');
+  addEventListener('scroll', function () { hdr.classList.toggle('solid', scrollY > innerHeight * .6); }, { passive: true });
+
+  render();
+  // hero intro (non-GL parts)
+  var hero = document.getElementById('hero');
+  requestAnimationFrame(function () { requestAnimationFrame(function () { hero.classList.add('ready'); hero.querySelector('.split').classList.add('in'); }); });
+  // count-up
+  var cnt = document.getElementById('count');
+  if (!reduce) { var n = 0; cnt.textContent = '00'; setTimeout(function tick() { n++; cnt.textContent = String(n).padStart(2, '0'); if (n < WORKS.length) setTimeout(tick, 70); }, 900); }
+})();
+</script>
+
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js" } }</script>
+<script type="module">
+// E2: point cloud assembles into the wordmark; points flee the pointer; scrolling scatters them again.
+const tier = window.agwTier();
+const hero = document.getElementById('hero');
+if (hero && tier !== 'poster') {
+  try {
+    const THREE = await import('three');
+    await document.fonts.ready;
+    const COUNT = tier === 'full' ? 18000 : 7000;
+    const WORD = 'VERINODA';
+    const NARROW = hero.clientWidth < 760;
+    const LINES = NARROW ? ['VERI', 'NODA'] : [WORD];
+    const CW = NARROW ? 1000 : 1600, CH = NARROW ? 800 : 340;
+    function sampleText(lines, n) {
+      const w = CW, h = CH, c = document.createElement('canvas'); c.width = w; c.height = h;
+      const x = c.getContext('2d', { willReadFrequently: true });
+      x.fillStyle = '#fff'; x.textAlign = 'center'; x.textBaseline = 'middle';
+      const lh = h / lines.length;
+      let size = lh * (NARROW ? 0.98 : 0.86); const f = s => `800 ${s}px "Bricolage Grotesque", sans-serif`; x.font = f(size);
+      const widest = () => Math.max(...lines.map(l => x.measureText(l).width));
+      while (widest() > w * 0.96 && size > 20) { size -= 4; x.font = f(size); }
+      lines.forEach((l, k) => x.fillText(l, w / 2, lh * (k + .5)));
+      const lastLine = lines[lines.length - 1];
+      const lastStart = w / 2 + x.measureText(lastLine).width / 2 - x.measureText('A').width, lastTop = lh * (lines.length - 1);
+      const d = x.getImageData(0, 0, w, h).data, pts = [];
+      for (let y = 0; y < h; y += 2) for (let i = 0; i < w; i += 2) if (d[(y * w + i) * 4 + 3] > 128) pts.push(i / w - 0.5, -(y / h - 0.5) * (h / w), (i >= lastStart && y >= lastTop) ? 1 : 0);
+      const out = new Float32Array(n * 3), acc = new Float32Array(n), m = pts.length / 3 || 1;
+      for (let k = 0; k < n; k++) { const j = ((Math.random() * m) | 0) * 3; out[k * 3] = pts[j] * 7; out[k * 3 + 1] = pts[j + 1] * 7; out[k * 3 + 2] = (Math.random() - 0.5) * 0.1; acc[k] = pts[j + 2]; }
+      return { out, acc };
+    }
+    const start = new Float32Array(COUNT * 3), seed = new Float32Array(COUNT);
+    for (let i = 0; i < COUNT; i++) {
+      const r = 2.4 + Math.random() * 3.4, a = Math.random() * Math.PI * 2, b = Math.acos(2 * Math.random() - 1);
+      start[i * 3] = r * Math.sin(b) * Math.cos(a) * 1.7; start[i * 3 + 1] = r * Math.cos(b) * .9; start[i * 3 + 2] = r * Math.sin(b) * Math.sin(a);
+      seed[i] = Math.random();
+    }
+    const { out: end, acc } = sampleText(LINES, COUNT);
+    for (let i = 0; i < COUNT; i++) if (!acc[i] && Math.random() < 0.035) acc[i] = 1; // a few signal sparks across the word
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(start, 3));
+    geo.setAttribute('aEnd', new THREE.BufferAttribute(end, 3));
+    geo.setAttribute('aSeed', new THREE.BufferAttribute(seed, 1));
+    geo.setAttribute('aAcc', new THREE.BufferAttribute(acc, 1));
+    const mat = new THREE.ShaderMaterial({
+      transparent: true, depthWrite: false,
+      uniforms: {
+        uProgress: { value: 0 }, uTime: { value: 0 }, uScale: { value: 1 }, uMouse: { value: new THREE.Vector2(99, 99) },
+        uSize: { value: tier === 'full' ? 30 : 40 }, uDpr: { value: Math.min(devicePixelRatio, 1.75) },
+        uInk: { value: new THREE.Color('#0f0e0c') }, uSig: { value: new THREE.Color('#ff4a1c') }
+      },
+      vertexShader: `attribute vec3 aEnd; attribute float aSeed; attribute float aAcc; uniform float uProgress; uniform float uTime; uniform float uScale; uniform vec2 uMouse; uniform float uSize; uniform float uDpr; varying float vAcc; varying float vP;
+        void main(){
+          float p = smoothstep(0., 1., clamp((uProgress - aSeed * .35) / .65, 0., 1.));
+          vec3 target = aEnd * uScale;
+          vec3 pos = mix(position * uScale, target, p);
+          pos += .06 * vec3(sin(uTime * .9 + aSeed * 20.), cos(uTime * .7 + aSeed * 30.), sin(uTime * .5 + aSeed * 10.)) * (1. - p * .85);
+          vec2 dv = pos.xy - uMouse; float dist = length(dv);
+          float push = smoothstep(1.1 * uScale, 0., dist) * .55 * uScale;
+          pos.xy += normalize(dv + 1e-4) * push; pos.z += push * 1.2;
+          vAcc = aAcc; vP = p;
+          vec4 mv = modelViewMatrix * vec4(pos, 1.); gl_Position = projectionMatrix * mv; gl_PointSize = uSize * uDpr * (.75 + aAcc * .5) / -mv.z;
+        }`,
+      fragmentShader: `uniform vec3 uInk; uniform vec3 uSig; varying float vAcc; varying float vP;
+        void main(){ float d = length(gl_PointCoord - .5); if (d > .5) discard; vec3 col = mix(uInk, uSig, vAcc); gl_FragColor = vec4(col, smoothstep(.5, .15, d) * (.55 + .4 * vP)); }`
+    });
+    const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true, powerPreference: 'high-performance' });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+    const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(40, 1, 0.1, 60);
+    camera.position.z = 9; scene.add(new THREE.Points(geo, mat));
+    hero.prepend(renderer.domElement);
+    renderer.domElement.setAttribute('aria-hidden', 'true');
+    let visH = 1, visW = 1;
+    const size = () => {
+      const w = hero.clientWidth, h = hero.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+      visH = 2 * camera.position.z * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)); visW = visH * camera.aspect;
+      const ratio = CH / CW, sc = Math.min((visW * (NARROW ? .9 : .86)) / 7, (visH * (NARROW ? .42 : .5)) / (7 * ratio));
+      mat.uniforms.uScale.value = sc;
+      scene.position.y = NARROW ? visH * .14 : visH * .06;
+      const wordBottom = scene.position.y - 7 * ratio * sc / 2; // world units
+      const tag = hero.querySelector('.hero-tag'); if (tag) tag.style.top = Math.round(h / 2 - wordBottom / visH * h + (NARROW ? 14 : 22)) + 'px';
+    };
+    new ResizeObserver(size).observe(hero); size();
+    let visible = true; new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(hero);
+    const mouse = new THREE.Vector2(99, 99), mTarget = new THREE.Vector2(99, 99);
+    if (tier === 'full') {
+      hero.addEventListener('pointermove', (e) => { const r = hero.getBoundingClientRect(); mTarget.set(((e.clientX - r.left) / r.width - .5) * visW, (-(e.clientY - r.top) / r.height + .5) * visH - scene.position.y); });
+      hero.addEventListener('pointerleave', () => mTarget.set(99, 99));
+    }
+    const scrollP = () => { const r = hero.getBoundingClientRect(); return Math.min(1, Math.max(0, -r.top / r.height)); };
+    const t0 = performance.now();
+    if (tier === 'still') { mat.uniforms.uProgress.value = 1; renderer.render(scene, camera); }
+    else renderer.setAnimationLoop(() => {
+      if (!visible || document.hidden) return;
+      const t = (performance.now() - t0) / 1000;
+      const intro = Math.min(1, Math.max(0, (t - .25) / 2.4));
+      const goal = intro * 1.15 * (1 - scrollP() * 1.1);
+      mat.uniforms.uProgress.value += (goal - mat.uniforms.uProgress.value) * 0.08;
+      mat.uniforms.uTime.value = t;
+      mouse.lerp(mTarget, .12); mat.uniforms.uMouse.value.copy(mouse);
+      renderer.render(scene, camera);
+    });
+    hero.classList.add('is-live');
+    window.__fx = { morph: true, points: COUNT, tier };
+  } catch (err) { console.warn('hero effect skipped', err); }
+}
+</script>
+</body>
+</html>
