@@ -51,7 +51,7 @@ const BENCH = [
 
 const I18N = {
   en: {
-    nav: { works: 'Work', verinoda: 'Verinoda', skills: 'Skills', apps: 'Apps', install: 'Install', contact: 'Talk to us' },
+    nav: { works: 'Work', verinoda: 'Verinoda', skills: 'Skills', apps: 'Apps', install: 'Install', contact: 'Talk to us', alt: 'Alternative design' },
     kinds: { tool: 'Verinoda tool', skill: 'Claude skill', app: 'App' },
     cats: { minecraft: 'Minecraft', roblox: 'Roblox', web: 'Web', edu: 'Education', desktop: 'Desktop' },
     status: { beta: 'beta', private: 'private', early: 'early access', wip: 'in progress', live: 'live', released: 'released' },
@@ -218,7 +218,7 @@ const I18N = {
   },
 
   tr: {
-    nav: { works: 'İşler', verinoda: 'Verinoda', skills: 'Skiller', apps: 'Uygulamalar', install: 'Kurulum', contact: 'Bize ulaşın' },
+    nav: { works: 'İşler', verinoda: 'Verinoda', skills: 'Skiller', apps: 'Uygulamalar', install: 'Kurulum', contact: 'Bize ulaşın', alt: 'Alternatif tasarım' },
     kinds: { tool: 'Verinoda aracı', skill: 'Claude skili', app: 'Uygulama' },
     cats: { minecraft: 'Minecraft', roblox: 'Roblox', web: 'Web', edu: 'Eğitim', desktop: 'Masaüstü' },
     status: { beta: 'beta', private: 'özel', early: 'erken erişim', wip: 'geliştiriliyor', live: 'canlı', released: 'yayında' },

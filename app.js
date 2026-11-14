@@ -39,7 +39,7 @@
         var cur = st.page === i[2] && !(i[2] === 'home' && st.target);
         return '<a href="' + i[0] + '"' + (cur ? ' aria-current="page"' : '') + '>' + esc(i[1]) + (i[3] ? '<sup>' + i[3] + '</sup>' : '') + '</a>';
       }) +
-      '<a class="m-only" href="#/contact">' + esc(n.contact) + '</a></div><a class="nav-cta" href="#/contact">' + esc(n.contact) + '</a>' +
+      '<a class="alt-l" href="alt/">' + esc(n.alt) + ' <span aria-hidden="true">↗</span></a><a class="m-only" href="#/contact">' + esc(n.contact) + '</a></div><a class="nav-cta" href="#/contact">' + esc(n.contact) + '</a>' +
       '<div class="lang" role="group" aria-label="Language">' +
       ['en', 'tr'].map(function (l) { return '<button type="button" data-lang="' + l + '" aria-pressed="' + (st.lang === l) + '">' + l.toUpperCase() + '</button>'; }).join('') +
       '</div><button type="button" class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav-links">' + (st.lang === 'tr' ? 'Menü' : 'Menu') + '</button></div></div></nav>';
@@ -56,7 +56,7 @@
       '<p class="copy">© 2026 Verinoda Labs</p></div>' +
       '<div class="foot-links"><a href="#/verinoda">Verinoda</a><a href="#/symbiosis">Symbiosis</a><a href="#/skills">' + esc(t.nav.skills) + '</a><a href="#/apps">' + esc(t.nav.apps) + '</a>' +
       '<a href="#/install">' + esc(t.nav.install) + '</a><a href="#/contact">' + esc(t.nav.contact) + '</a>' +
-      '<a href="' + URL_ORG + '" target="_blank" rel="noopener">GitHub ↗</a><a href="https://pypi.org/project/verinoda/" target="_blank" rel="noopener">PyPI ↗</a></div>' +
+      '<a href="alt/">' + esc(t.nav.alt) + '</a><a href="' + URL_ORG + '" target="_blank" rel="noopener">GitHub ↗</a><a href="https://pypi.org/project/verinoda/" target="_blank" rel="noopener">PyPI ↗</a></div>' +
       '<p class="note">' + esc(t.footer.note) + '</p></div></footer>';
   }
 

@@ -69,6 +69,8 @@ nav.top { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, 
 .nav-links a { padding: 6px 0; border-bottom: 1px solid transparent; transition: border-color var(--t-s) var(--ease), color var(--t-s) var(--ease); white-space: nowrap; }
 .nav-links a:hover { color: var(--accent); }
 .nav-links a[aria-current=page] { border-bottom-color: var(--accent); }
+.nav-links a.alt-l { color: var(--accent); }
+.nav-links a.alt-l:hover { color: var(--text); }
 .nav-links sup { font-size: 10px; color: var(--accent); margin-left: 2px; }
 .lang { display: flex; border: 1px solid var(--line-strong); }
 .lang button { font: 800 12px/1 var(--font); letter-spacing: .08em; padding: 8px 10px; border: 0; background: transparent; cursor: pointer; min-height: 32px; transition: background var(--t-s), color var(--t-s); }
