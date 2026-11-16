@@ -1,0 +1,169 @@
+/* Home only: the prism scene (from direction D) and how the sections after it are arranged. Tokens only. */
+
+/* ------------------------------------------------------------------ the prism */
+.prism { position: relative; height: 100svh; min-height: 520px; }
+.prism__sticky { position: sticky; top: 0; height: 100svh; min-height: 520px; overflow: hidden; container-type: size; background: var(--c-bg); }
+.prism__canvas { position: absolute; inset: 0; }
+.prism__gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity 500ms var(--ease-out); }
+.is-live .prism__gl { opacity: 1; }
+/* the stage: the 16:10 safe area (V, fan, names, title) fitted inside the viewport; everything in it is sized in cq
+   units. What lies around it is still scene: the WebGL camera renders past the stage, and the 2D plate is wider and
+   taller than the stage (2.23 x 1.2 wide, 1.75 x 1.1 tall), so the studio reaches every edge from 4:3 to 32:9. */
+.stage { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: min(100cqw, 160cqh); height: min(100cqh, 62.5cqw); container-type: size; }
+
+/* ------------------------------------------------------------------ the prism without WebGL (poster and 2D fallback) */
+@property --in { syntax: '<number>'; inherits: false; initial-value: 1; }
+.poster { position: absolute; inset: 0; transition: opacity 600ms var(--ease-out), visibility 0s; }
+.poster__sway { position: absolute; inset: 0; }
+.plate { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: calc(min(100cqw, 160cqh) * 2.2292); height: calc(min(100cqh, 62.5cqw) * 1.2); }
+.plate img { width: 100%; height: 100%; }
+.beams { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: min(100cqw, 160cqh); height: min(100cqh, 62.5cqw); overflow: visible; }
+.beams--tall { display: none; }
+.beams line { fill: none; stroke-linecap: round; }
+.b-halo { stroke-width: 5px; stroke-opacity: .2; }
+.b-ray--main .b-halo, .b-halo--in { stroke-width: 9px; stroke-opacity: .26; }
+.b-core { stroke-width: 1.2px; stroke-opacity: .95; }
+.b-ray--main .b-core, .b-core--in { stroke-width: 1.9px; }
+.b-flow { stroke-width: 0; }
+.b-in { stroke-width: 1px; stroke-opacity: .3; }
+.b-rf { stroke-width: 1.4px; stroke-opacity: .5; }
+.b-rf--in { stroke-opacity: .3; }
+.b-land-h { opacity: .3; }
+.b-flash { opacity: .35; transform-box: fill-box; transform-origin: center; }
+/* WebGL live: the poster fades out, then stops painting */
+.is-live .poster { opacity: 0; visibility: hidden; transition: opacity 600ms var(--ease-out), visibility 0s 600ms; }
+/* live tiers open from a dark studio (the scene's first frame): the poster shows for the 2D scene, or if the WebGL scene gives up or is late */
+.is-ride:not(.is-poster):not(.is-wait):not(.is-2d) .poster { opacity: 0; transition: none; }
+
+.hero { position: absolute; left: 5cqw; bottom: 7.5cqh; width: 40cqw; }
+.hero__h { font-size: 4.35cqw; line-height: 1.02; font-weight: var(--w-display); letter-spacing: -.028em; text-wrap: balance; max-width: 11em; }
+.hero__lead { margin-top: 2.6cqh; font-size: max(16px, 1.22cqw); line-height: 1.5; color: rgb(var(--ink-rgb) / .74); max-width: 30em; }
+.hero__cta { margin-top: 3.4cqh; font-size: max(15px, 1.08cqw); }
+
+.rays-ride, .rays { position: absolute; inset: 0; }
+/* the names sit where the rays land: two tiers like strong and faint spectral lines (labels for pointers; the index below is the list) */
+.rays__item { --x: var(--xw); --y: var(--yw); position: absolute; left: calc(var(--x) * 1%); top: calc(var(--y) * 1%); translate: 0 -50%; white-space: nowrap; will-change: transform; }
+.rays__link { display: inline-flex; align-items: baseline; gap: .6em; padding: .22em 0 .22em 1.05cqw; text-decoration: none; }
+.rays__t { font-size: 1.5cqw; font-weight: 440; letter-spacing: -.012em; color: var(--c-ink); transition: color var(--t-micro); }
+.rays__item--minor .rays__link { padding-left: .9cqw; }
+.rays__item--minor .rays__t { font-size: max(13px, .98cqw); font-weight: 400; letter-spacing: 0; color: rgb(var(--ink-rgb) / .8); }
+.rays__k { font-size: max(12px, .8cqw); color: var(--c-mute); letter-spacing: .01em; transition: opacity var(--t-micro); }
+.rays__link:hover .rays__t { color: color-mix(in oklab, var(--c, var(--c-lilac)) 52%, #fff); }
+.rays:has(.rays__link:hover) .rays__link:not(:hover) .rays__t { color: rgb(var(--ink-rgb) / .56); }
+.rays:has(.rays__link:hover) .rays__link:not(:hover) .rays__k { opacity: .4; }
+
+/* live ride (laptop): the section pins for half a screen while the camera rides the first ray down to the index.
+   The index overlaps the whole last screen of the pinned scene and fades in as the camera arrives, so the frame is
+   never an empty wall: at the end its heading sits near the top and the ray lands on its first row. */
+.is-ride .prism { height: 150svh; }
+@media (min-aspect-ratio: 4/5) {
+  .is-ride .wix-sec { margin-top: -100svh; background: linear-gradient(180deg, rgb(var(--bg-rgb) / 0) 0, rgb(var(--bg-rgb) / 0) 100svh, var(--c-bg) calc(100svh + 120px)); }
+  .js.is-ride .wix-sec > .wrap { opacity: clamp(0, calc((var(--p, 0) - .32) * 3.2), 1); }   /* without the page script (.js dropped by the failsafe) the index simply shows */
+  .is-ride .wix-sec:focus-within > .wrap { opacity: 1; }
+  .is-ride:not(.is-landed) .wix-sec { pointer-events: none; }   /* invisible at the top: the hero's action stays clickable */
+}
+.is-ride .hero { opacity: calc(1 - var(--p, 0) * 4); }
+/* --in: set by the scene as each ray reaches the wall during the opening (hidden until then; shown with the poster) */
+.is-ride .rays__item { --in: 0; opacity: calc(var(--in) * (1 - var(--p, 0) * 3.2)); }
+.is-ride .rays__item:first-child { opacity: calc(var(--in) * (1 - max(0, var(--p, 0) - .42) * 6)); }   /* gone before the index heading arrives */
+.is-wait:not(.is-live) .rays__item, .is-poster .rays__item, .is-2d .rays__item { --in: 1; }
+.is-capture .hero, .is-capture .rays, .is-capture .top { visibility: hidden; }
+.is-riding .hero, .is-riding .rays { pointer-events: none; }   /* faded out during the ride: no invisible links */
+
+/* ------------------------------------------------------------------ the 2D scene (software GL, no WebGL, or a scene that gave up)
+   Same composition, same timeline as the WebGL opening; only transform, opacity and stroke-dashoffset move. Looping
+   motion is stepped to 30 updates a second (steps()), so a CPU-rasterised page repaints the beams at most 30 times. */
+@media (prefers-reduced-motion: no-preference) {
+  /* idle: flow along the beams, a slow breath of the fan (names breathe with it), sway, floor reflection, pointer parallax */
+  .is-2d .b-flow { stroke-width: 2px; stroke-dasharray: 3 47; stroke-opacity: .8; animation: bFlow 1.6s steps(48) infinite; animation-delay: calc(-.8s + var(--i, 0) * -.06s); }
+  .is-2d .b-ray--main .b-flow, .is-2d .b-flow--in { stroke-width: 2.6px; }
+  .is-2d .b-flow--in { animation-duration: 2.4s; animation-timing-function: steps(72); animation-delay: 0s; }
+  .is-2d .beams--wide, .is-2d .rays { transform-origin: var(--pin-x) var(--pin-y); }
+  .is-2d .beams--tall { transform-origin: var(--tpin-x) var(--tpin-y); }
+  .is-2d .beams { animation: bBreathe 9s ease-in-out infinite alternate; }
+  .is-2d .rays { animation: bBreathe 9s ease-in-out infinite alternate, bSway 11s ease-in-out infinite alternate; }
+  .is-2d .poster__sway { animation: bSway 11s ease-in-out infinite alternate; }
+  .is-2d .b-refl { animation: bRefl 6s ease-in-out infinite alternate; }
+  .is-2d .plate img { translate: calc(var(--mx, 0) * -6px) calc(var(--my, 0) * -4px); transition: translate 700ms var(--ease-out); }
+  /* opening: the same timeline as the WebGL scene (x --k: 1 full, ~0.32 short) */
+  .is-2d.is-intro .plate { animation: bPlate calc(.5s * var(--k, 1)) var(--ease-out) both; }
+  .is-2d.is-intro .b-core, .is-2d.is-intro .b-halo { stroke-dasharray: 100 100; }
+  .is-2d.is-intro .b-incoming .b-core, .is-2d.is-intro .b-incoming .b-halo { animation: bDraw calc(.6s * var(--k, 1)) var(--ease-in-out) calc(.55s * var(--k, 1)) both; }
+  .is-2d.is-intro .b-ray .b-core, .is-2d.is-intro .b-ray .b-halo { animation: bDraw calc(.28s * var(--k, 1)) var(--ease-out) calc((1.25s + var(--i) * .05s) * var(--k, 1)) both; }
+  .is-2d.is-intro .b-land, .is-2d.is-intro .b-land-h { animation: bFade calc(.3s * var(--k, 1)) var(--ease-out) calc((1.5s + var(--i) * .05s) * var(--k, 1)) both; }
+  .is-2d.is-intro .b-inner, .is-2d.is-intro .b-refl, .is-2d.is-intro .b-pin { animation: bFade calc(.3s * var(--k, 1)) ease-out calc(1.15s * var(--k, 1)) both; }
+  .is-2d.is-intro .b-flash { animation: bFlash calc(.7s * var(--k, 1)) ease-out calc(1.15s * var(--k, 1)) both; }
+  .is-2d.is-intro .b-flow { animation: bFade calc(.4s * var(--k, 1)) ease-out calc(2.2s * var(--k, 1)) both; stroke-dasharray: 3 47; }
+  .is-2d.is-intro .rays__item { animation: bName calc(.3s * var(--k, 1)) ease-out calc((1.53s + var(--li, 0) * .05s) * var(--k, 1)) backwards; }
+}
+@keyframes bFlow { to { stroke-dashoffset: -50; } }
+@keyframes bBreathe { from { rotate: -.2deg; scale: .996; } to { rotate: .2deg; scale: 1.004; } }
+@keyframes bSway { from { translate: -3px 1px; } to { translate: 3px -1px; } }
+@keyframes bRefl { from { opacity: .55; } to { opacity: 1; } }
+@keyframes bPlate { from { opacity: 0; scale: 1.02; } }
+@keyframes bDraw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+@keyframes bFade { from { opacity: 0; } }
+@keyframes bFlash { 0% { opacity: 0; } 15% { opacity: 1; scale: 1.7; } 100% { opacity: .35; scale: 1; } }
+@keyframes bName { from { --in: 0; } to { --in: 1; } }
+/* the 2D form of the ride (laptop): the plate, beams and names move and grow together towards the first ray's landing
+   mark, which ends where the WebGL camera puts it (36%, 33% of the stage), beside the index's first row */
+@media (min-aspect-ratio: 4/5) {
+  .is-2d.is-ride .poster { transform-origin: calc(50cqw - min(100cqw, 160cqh) / 2 + min(100cqw, 160cqh) * var(--land-xf)) calc(50cqh - min(100cqh, 62.5cqw) / 2 + min(100cqh, 62.5cqw) * var(--land-yf));
+    transform: translate(calc(var(--p, 0) * min(100cqw, 160cqh) * (.36 - var(--land-xf))), calc(var(--p, 0) * min(100cqh, 62.5cqw) * (.33 - var(--land-yf)))) scale(calc(1 + var(--p, 0) * 1.4)); }
+  .is-2d.is-ride .rays-ride { transform-origin: var(--land-x) var(--land-y);
+    transform: translate(calc(var(--p, 0) * (36% - var(--land-x))), calc(var(--p, 0) * (33% - var(--land-y)))) scale(calc(1 + var(--p, 0) * 1.4)); }
+  .is-2d.is-ride .b-rays > .b-ray:not(:first-child), .is-2d.is-ride .b-inner { opacity: calc(1 - var(--p, 0) * 2.2); }
+}
+
+/* ------------------------------------------------------------------ 2. works index: the ray lands on its first row */
+.wix-sec { position: relative; z-index: 2; padding-top: var(--s-6); }
+.wix-sec__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-1) var(--s-3); margin-bottom: var(--s-4); }
+.wix-sec__head .t-lead { color: var(--c-mute); }
+@media (min-aspect-ratio: 4/5) and (min-width: 1000px) {
+  .is-ride .wix-sec { padding-top: max(40px, calc(33svh - 168px)); }   /* first row meets the landing mark at ~33% of the screen; heading at ~10–17% */
+  .is-ride .wix-sec .wrap { padding-left: max(var(--pad), 37vw); max-width: none; }
+  .is-ride .wix { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .is-ride .wix__row--main .wix__t { font-size: 25px; }
+}
+
+/* ------------------------------------------------------------------ 3. Verinoda */
+.vsum .wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-5); align-items: start; }
+.vsum__head { position: sticky; top: calc(var(--header-h) + var(--s-4)); }
+.vsum__h { font-size: var(--fs-3xl); line-height: var(--lh-tight); font-weight: var(--w-light); letter-spacing: var(--track-tight); margin: var(--s-1) 0 var(--s-3); }
+.vsum__head .t-meta { margin-top: var(--s-2); }
+.vsum__jh { margin: var(--s-2) 0 var(--s-5); color: var(--c-mute); font-size: var(--fs-l); }
+.vsum__journey .stps { grid-template-columns: 1fr; gap: var(--s-4); padding: 0 0 0 var(--s-5); }
+.vsum__journey .stps__beam { left: 7px; right: auto; top: 0; bottom: 0; width: 1px; height: auto; background: linear-gradient(180deg, #fff, var(--c-lilac) 45%, var(--c) 90%, rgb(124 58 237 / 0)); }
+.vsum__journey .stp { display: grid; grid-template-columns: 7em minmax(0, 1fr); gap: 0 var(--s-3); }
+.vsum__journey .stp::before { left: calc(-1 * var(--s-5)); top: 6px; }
+.vsum__journey .stp__n { grid-row: span 2; padding-top: 4px; }
+@media (max-width: 1000px) { .vsum .wrap { grid-template-columns: 1fr; } .vsum__head { position: static; } }
+@media (max-width: 600px) { .vsum__journey .stps { padding-left: var(--s-4); } .vsum__journey .stp { grid-template-columns: 1fr; } .vsum__journey .stp::before { left: calc(-1 * var(--s-4)); } }
+
+/* ------------------------------------------------------------------ 5. SupernaturalENG */
+.sn__head { max-width: 46em; margin-bottom: var(--s-4); }
+.sn__head .t-h2 { margin: var(--s-1) 0 var(--s-2); }
+.sn .cmp { margin-inline: calc(-1 * min(var(--pad), 24px)); }
+.sn__foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: var(--s-4); margin-top: var(--s-5); }
+
+/* ------------------------------------------------------------------ 7. contact */
+.contact .sec__head { margin-bottom: var(--s-4); }
+
+/* ------------------------------------------------------------------ tall stage (phones, portrait tablets): no pin; the index follows the scene */
+@media (max-aspect-ratio: 4/5) {
+  .stage { width: min(100cqw, 46.21cqh); height: min(100cqh, 216.4cqw); }
+  .plate { width: calc(min(100cqw, 46.21cqh) * 1.7514); height: calc(min(100cqh, 216.4cqw) * 1.1); }
+  .beams { width: min(100cqw, 46.21cqh); height: min(100cqh, 216.4cqw); }
+  .beams--wide { display: none; }
+  .beams--tall { display: block; }
+  .rays__item { --x: var(--xt); --y: var(--yt); }
+  .rays { display: none; }
+  .is-ride .prism { height: 100svh; }
+  .is-ride .wix-sec { margin-top: 0; background: var(--c-bg); }
+  .is-ride .hero { opacity: 1; }
+  .hero { left: 6.2cqw; right: 6.2cqw; width: auto; bottom: 3.6cqh; }
+  .hero__h { font-size: 9.4cqw; line-height: 1.04; max-width: none; }
+  .hero__lead { font-size: var(--fs-m); line-height: 1.45; margin-top: 1.5cqh; color: var(--ink-2); }
+  .hero__cta { margin-top: 2.3cqh; font-size: 16px; }
+  .wix-sec { padding-top: var(--s-5); }
+}

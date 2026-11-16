@@ -1,0 +1,86 @@
+{
+  "boyut_cehennem_kale": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "boyut_cehennem_kale.webp",
+        "bytes": 97852
+      }
+    ]
+  },
+  "boyut_purgatory": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "boyut_purgatory.webp",
+        "bytes": 35172
+      }
+    ]
+  },
+  "bunker_kutuphane": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "bunker_kutuphane.webp",
+        "bytes": 58184
+      }
+    ]
+  },
+  "cennet_surgun": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "cennet_surgun.webp",
+        "bytes": 20216
+      }
+    ]
+  },
+  "impala_yan": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "impala_yan.webp",
+        "bytes": 5894
+      }
+    ]
+  },
+  "minimap_gorev": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "minimap_gorev.webp",
+        "bytes": 17994
+      }
+    ]
+  },
+  "roadhouse_ic": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "roadhouse_ic.webp",
+        "bytes": 44392
+      }
+    ]
+  }
+}

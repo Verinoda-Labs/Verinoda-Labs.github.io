@@ -1,0 +1,214 @@
+/* Verinoda Labs v3 — base: font, reset, type, header, phone menu, footer, section frame, reveal.
+   Values come from tokens.css only. */
+@font-face { font-family: "Hanken Grotesk"; src: url("../fonts/hanken-latin.woff2") format("woff2"); font-weight: 100 900; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Hanken Grotesk"; src: url("../fonts/hanken-latinext.woff2") format("woff2"); font-weight: 100 900; font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--c-bg); color: var(--c-ink); -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + var(--s-2)); }
+body { margin: 0; font-family: var(--ff); font-size: var(--fs-m); line-height: var(--lh-body); font-weight: var(--w-text);
+  text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; overflow-x: clip; background: var(--c-bg); }
+a { color: inherit; }
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+h1, h2, h3, h4, p, ol, ul, dl, dd, figure, blockquote { margin: 0; padding: 0; }
+ol, ul { list-style: none; }
+h1, h2, h3, h4 { font-weight: var(--w-display); text-wrap: balance; }
+p { text-wrap: pretty; }
+code, kbd, samp { font-family: var(--ff-mono); font-size: .88em; }
+:focus-visible { outline: 2px solid var(--c-lilac); outline-offset: 3px; border-radius: var(--radius); }
+::selection { background: rgb(124 58 237 / .55); color: #fff; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.skip { position: absolute; left: 12px; top: -80px; z-index: 60; background: var(--c-ink); color: var(--c-bg); padding: 12px 16px; text-decoration: none; font-weight: var(--w-strong); border-radius: var(--radius); }
+.skip:focus { top: 12px; }
+
+/* ------------------------------------------------------------------ type roles */
+.t-h1 { font-size: var(--fs-3xl); line-height: var(--lh-tight); font-weight: var(--w-light); letter-spacing: var(--track-tight); }
+.t-h2 { font-size: var(--fs-2xl); line-height: var(--lh-head); font-weight: var(--w-display); letter-spacing: var(--track-head); }
+.t-h3 { font-size: var(--fs-xl); line-height: 1.18; font-weight: 440; letter-spacing: -.012em; }
+.t-lead { font-size: var(--fs-l); line-height: 1.5; color: var(--c-ink); max-width: 32em; }
+.t-body { font-size: var(--fs-m); color: var(--ink-2); max-width: var(--measure); }
+.t-meta { font-size: var(--fs-s); color: var(--c-mute); }
+.t-kicker { font-size: var(--fs-s); color: var(--c-mute); letter-spacing: .01em; }
+.t-num { font-size: var(--fs-4xl); line-height: .92; font-weight: 280; letter-spacing: -.045em; font-variant-numeric: tabular-nums; }
+
+/* ------------------------------------------------------------------ actions: one filled button, one text link */
+.btn { display: inline-flex; align-items: center; gap: .6em; min-height: 48px; padding: 0 22px; background: var(--c-ink); color: var(--c-bg);
+  font: inherit; font-size: 16px; font-weight: var(--w-strong); text-decoration: none; border: 0; border-radius: var(--radius); cursor: pointer;
+  transition: background var(--t-micro), transform var(--t-micro) var(--ease-out); }
+.btn:hover { background: #fff; }
+.btn__t { display: inline-block; transition: transform var(--t-ui) var(--ease-out); }
+.btn.ext::after { color: inherit; transition: transform var(--t-ui) var(--ease-out); }
+/* text link: a hairline rests under it, the full-strength line is drawn from the left on hover and focus */
+.link { position: relative; display: inline-flex; align-items: center; min-height: var(--hit); font-weight: var(--w-ui); text-decoration: none; color: var(--c-ink);
+  background: linear-gradient(rgb(var(--ink-rgb) / .5), rgb(var(--ink-rgb) / .5)) 0 calc(50% + .72em) / 100% 1px no-repeat; transition: color var(--t-micro); }
+.link::before { content: ""; position: absolute; left: 0; right: 0; top: calc(50% + .72em); height: 1px; background: currentColor; transform: scaleX(0); transform-origin: 0 50%;
+  pointer-events: none; transition: transform var(--t-ui) var(--ease-out); }
+.link--quiet { font-weight: var(--w-text); color: var(--ink-2); background-image: linear-gradient(var(--line-strong), var(--line-strong)); }
+.link--quiet:hover { color: var(--c-ink); }
+@media (prefers-reduced-motion: no-preference) {
+  .link:hover::before, .link:focus-visible::before { transform: scaleX(1); }
+  .btn:hover .btn__t, .btn:focus-visible .btn__t { transform: translateX(3px); }
+  .btn:hover.ext::after, .btn:focus-visible.ext::after { transform: translate(2px, -2px); }
+  .btn:active { transform: translateY(2px); }
+}
+@media (prefers-reduced-motion: reduce) { .link:hover, .link:focus-visible { color: var(--c-ink); background-image: linear-gradient(currentColor, currentColor); } }
+.ext::after { content: "↗"; display: inline-block; margin-left: .3em; font-size: .82em; color: var(--c-mute); }   /* leaves the site */
+
+/* ------------------------------------------------------------------ header */
+.top { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; gap: var(--s-3);
+  height: var(--header-h); padding: 0 var(--pad); pointer-events: none; }
+.top::before { content: ""; position: absolute; inset: 0 0 -34px 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(rgb(var(--bg-rgb) / .94) 55%, rgb(var(--bg-rgb) / 0)); transition: opacity var(--t-ui); }
+/* site.js: see-through over the opening, gains its floor once the page scrolls; hides while reading down, returns on the way up.
+   (No transform at rest: a transformed ancestor would trap the phone menu's fixed overlay.) */
+.motion-ready .top:not(.is-solid)::before { opacity: .42; }   /* nearly clear: just enough shade to keep the nav legible over a bright cover */
+@media (prefers-reduced-motion: no-preference) {
+  .motion-ready .top { transition: transform var(--t-ui) var(--ease-out); }
+  .motion-ready .top.is-hid { transform: translateY(-100%); }
+  .motion-ready.menu-open .top { transition: none; }
+}
+.top > * { pointer-events: auto; }
+.brand { display: inline-flex; align-items: center; gap: 12px; min-height: var(--hit); text-decoration: none; font-weight: var(--w-strong); font-size: 17px; letter-spacing: -.005em; }
+.brand__mark { display: block; }
+.nav__list { display: flex; align-items: center; gap: clamp(14px, 1.9vw, 30px); font-size: var(--fs-s); }
+.nav__list a { display: inline-flex; align-items: center; min-height: var(--hit); text-decoration: none; color: var(--ink-2); transition: color var(--t-micro); }
+.nav__list a:hover, .nav__list a[aria-current="page"] { color: var(--c-ink); }
+.nav__list a[aria-current="page"] { box-shadow: inset 0 -1px 0 var(--c-orchid); }
+.nav__lang { margin-left: clamp(8px, 2vw, 28px); }
+.nav__lang a { font-size: var(--fs-xs); letter-spacing: .06em; }
+.nav__contact a { color: var(--c-ink); box-shadow: inset 0 -1px 0 rgb(var(--ink-rgb) / .5); }
+.nav__toggle { display: none; }
+
+@media (max-width: 960px) {
+  .nav__toggle { display: inline-flex; align-items: center; min-height: var(--hit); min-width: var(--hit); padding: 0 4px; background: none; border: 0;
+    color: var(--c-ink); font: inherit; font-size: var(--fs-s); font-weight: var(--w-strong); cursor: pointer; }
+  .nav__list { position: fixed; inset: 0; z-index: -1; flex-direction: column; align-items: flex-start; justify-content: center; gap: 2px;
+    padding: 96px var(--pad) 48px; background: rgb(var(--bg-rgb) / .98); font-size: 30px; font-weight: var(--w-display);
+    opacity: 0; visibility: hidden; transition: opacity var(--t-ui), visibility var(--t-ui); }
+  .nav__list a { color: var(--c-ink); }
+  .nav__list a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--c-orchid); }
+  .nav__lang { margin: var(--s-3) 0 0; }
+  .nav__lang a { font-size: var(--fs-s); }
+  .menu-open .nav__list { opacity: 1; visibility: visible; }
+  .menu-open body { overflow: hidden; }
+  .no-js .nav__list { position: static; z-index: auto; opacity: 1; visibility: visible; flex-direction: row; flex-wrap: wrap; padding: 0; background: none; font-size: var(--fs-s); gap: 0 16px; }
+  .no-js .top { position: absolute; height: auto; min-height: var(--header-h); flex-wrap: wrap; padding-block: 12px; }
+  .no-js .nav__toggle { display: none; }
+  .no-js .nav { width: 100%; }
+  .no-js .nav__list { justify-content: flex-start; }
+  .no-js .nav__lang { margin: 0; }
+}
+
+/* ------------------------------------------------------------------ section frame */
+.wrap { width: 100%; max-width: calc(var(--max) + 2 * var(--pad)); margin-inline: auto; padding-inline: var(--pad); }
+.sec { position: relative; padding-block: var(--section); }
+.sec--surface { background: linear-gradient(180deg, var(--c-bg), var(--c-surface) 18%, var(--c-surface) 82%, var(--c-bg)); }
+/* the light language between sections: a thin ray enters from the left and fades into the spectrum */
+.sec--beam::before { content: ""; position: absolute; left: 0; top: 0; width: min(78vw, 1100px); height: 1px; background: var(--beam); opacity: .55; pointer-events: none; }
+.sec__head { display: grid; gap: var(--s-2); max-width: 46em; margin-bottom: var(--s-5); }
+.sec__head .t-kicker { order: -1; }
+.sec__foot { margin-top: var(--s-5); display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-4); }
+
+/* ------------------------------------------------------------------ footer: the hero's beam, split once per work */
+.foot { position: relative; padding: 0 0 var(--s-4); background: var(--c-bg); }
+.foot__beam { display: block; width: 100%; height: clamp(72px, 9vw, 132px); }
+.foot__in { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 2fr); gap: var(--s-5) var(--s-4); padding-top: var(--s-4); }
+.foot__mail { align-self: start; font-size: clamp(26px, 2.6vw, 40px); line-height: 1.1; font-weight: var(--w-display); letter-spacing: -.02em; text-decoration: none;
+  overflow-wrap: anywhere; background: linear-gradient(var(--line-strong), var(--line-strong)) 0 100% / 100% 1px no-repeat; padding-block: 5px 6px; transition: background-size var(--t-ui) var(--ease-out); }
+.foot__mail:hover { background-image: linear-gradient(var(--c-orchid), var(--c-orchid)); }
+.foot__brand { display: flex; align-items: center; gap: 14px; font-size: var(--fs-xl); font-weight: var(--w-display); letter-spacing: -.015em; }
+.foot__lead { margin-top: var(--s-2); color: var(--c-mute); font-size: var(--fs-s); max-width: 26em; }
+.foot__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); }
+.foot__cols h2 { font-size: var(--fs-xs); font-weight: var(--w-ui); color: var(--c-mute); letter-spacing: .04em; margin-bottom: var(--s-1); }
+.foot__cols a { display: flex; align-items: center; min-height: 36px; font-size: var(--fs-s); color: var(--ink-2); text-decoration: none; transition: color var(--t-micro); }
+.foot__cols a:hover { color: var(--c-ink); }
+.foot__base { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-2) var(--s-4); padding-top: var(--s-3); border-top: 1px solid var(--line);
+  font-size: var(--fs-xs); color: var(--c-mute); }
+.foot__base p { max-width: 60em; }
+.foot__base a { color: var(--c-ink); }
+@media (max-width: 760px) {
+  .foot__in { grid-template-columns: 1fr; gap: var(--s-4); }
+  .foot__cols { grid-template-columns: 1fr 1fr; }
+  .foot__cols a { min-height: var(--hit); }
+}
+
+/* ------------------------------------------------------------------ motion: masks, reveal, opening
+   Content is visible without script and under reduced motion; every start state below needs html.js and motion allowed, and
+   a pure-CSS 2 s net shows everything if site.js never reports in (it adds .motion-ready). Only transform, opacity, clip-path. */
+/* masks: text rises out of its own line box; padding keeps ascenders, descenders and Turkish dots inside, the negative margin gives the room back */
+.mk { display: block; overflow: hidden; padding: .14em .06em .2em; margin: -.14em -.06em -.2em; }
+.mk__i { display: block; }
+.stat__n .mk, .msr__n .mk { padding-bottom: .02em; margin-bottom: -.02em; }   /* digits have no descenders: the mask must not reach the label below */
+:is(h1, h2, h3, .stat__n, .msr__n):has(> .mk) { display: flow-root; }   /* the negative margin stays inside the heading, layout is unchanged */
+.ph__h .w { display: inline-block; overflow: hidden; vertical-align: top; padding: .14em .06em .2em; margin: -.14em -.06em -.2em; }
+.ph__h .w > span { display: block; }
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] { --dl: calc(min(var(--si, var(--i, 0)), 9) * var(--stagger)); }     /* siblings arriving together step by --stagger, ten at most */
+  .js [data-reveal] { opacity: 0; transform: translateY(32px); }
+  .js [data-reveal].is-in { opacity: 1; transform: none; transition: opacity var(--t-reveal) var(--ease-out), transform 1000ms var(--ease-out); transition-delay: var(--dl); }
+  /* a heading block: the block itself stays put, its heading rises out of a mask, kicker and intro follow */
+  .js :is(.sec__head, .cta__in, h2)[data-reveal] { transform: none; }
+  .js :is(.sec__head, .cta__in, h2)[data-reveal].is-in { transition: none; }
+  .js [data-reveal] .mk__i { transform: translateY(135%); }
+  .js [data-reveal].is-in .mk__i { transform: none; transition: transform 1000ms var(--ease-out); transition-delay: calc(var(--dl) + 80ms); }
+  .js :is(.stat__n, .msr__n) .mk__i { transition-delay: calc(var(--dl) + 160ms); }
+  .js :is(.sec__head, .cta__in)[data-reveal] > :is(.t-kicker, .sec__intro, .cta__x, .acts) { opacity: 0; transform: translateY(16px); }
+  .js :is(.sec__head, .cta__in)[data-reveal].is-in > :is(.t-kicker, .sec__intro, .cta__x, .acts) {
+    opacity: 1; transform: none; transition: opacity 700ms var(--ease-out), transform 800ms var(--ease-out); transition-delay: calc(var(--dl) + 220ms); }
+  /* arrived while the page was being jumped to (anchor, restored scroll): no animation at all */
+  .js [data-reveal].is-in.is-now, .js [data-reveal].is-in.is-now :is(.mk__i, .t-kicker, .sec__intro, .cta__x, .acts) { transition: none; }
+  /* rays and rules are drawn from the left */
+  .js [data-reveal="beam"] { opacity: 1; transform: none; clip-path: inset(0 100% 0 0); }
+  .js [data-reveal="beam"].is-in { clip-path: inset(0 0 0 0); transition: clip-path 1100ms var(--ease-out); }
+  .js .sec--beam::before { clip-path: inset(0 100% 0 0); }
+  .js .sec--beam.is-drawn::before { clip-path: inset(0 0 0 0); transition: clip-path 1300ms var(--ease-out); }
+  .js .sec--beam.is-drawn.is-now::before { transition: none; }
+  /* safety net: if site.js has not reported in after 2 s, everything shows */
+  .js:not(.motion-ready) :is([data-reveal], .mk__i, .sec__head > .t-kicker, .sec__intro, .cta__x, .cta__in > .acts, .rbar__ray, .ss__ray) { animation: rv-safe 1ms 2s both; }
+  .js:not(.motion-ready) .sec--beam::before { animation: rv-safe 1ms 2s both; }
+}
+@keyframes rv-safe { to { opacity: 1; transform: none; clip-path: none; } }
+
+/* page opening: starts with the first style recalculation, no script involved (not under .no-js, not under reduced motion) */
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.no-js) .ph__h .w > span { animation: mk-up 900ms var(--ease-out) both; animation-delay: calc(80ms + var(--i, 0) * 55ms); }
+  html:not(.no-js) .ph__k { animation: fade-up 700ms var(--ease-out) 380ms both; }
+  html:not(.no-js) .ph__lead { animation: fade-up 800ms var(--ease-out) 460ms both; }
+  html:not(.no-js) .ph__meta { animation: fade-up 800ms var(--ease-out) 540ms both; }
+  html:not(.no-js) .ph__in .acts { animation: fade-up 800ms var(--ease-out) 620ms both; }
+}
+@keyframes mk-up { from { transform: translateY(135%); } to { transform: none; } }
+@keyframes fade-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 1ms !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+/* page to page (Chromium, Safari 18.2+): a short cross-fade of the document; the header stays where it is. Elsewhere: a normal navigation. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-group(root) { animation-duration: 220ms; }
+  ::view-transition-old(root) { animation: vt-out 120ms var(--ease-in-out) both; }
+  ::view-transition-new(root) { animation: vt-in 220ms var(--ease-out) both; }
+  .top { view-transition-name: site-top; }
+  ::view-transition-group(site-top) { animation-duration: 0s; }
+}
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; } }
+
+/* ------------------------------------------------------------------ wide screens (>= 1600 px)
+   tokens.css scales type, space, gutter and the content width. Raw-px values of this file follow here, in rem (rem = the wide multiplier). */
+@media (min-width: 1600px) {
+  .btn { min-height: 3rem; padding: 0 1.375rem; font-size: 1rem; }
+  .brand { gap: .75rem; font-size: 1.0625rem; }
+  .brand__mark { width: 1.625rem; height: 1.625rem; }
+  .top::before { inset: 0 0 -2.125rem 0; }
+  .foot__beam { height: 8.25rem; }
+  .foot__mail { font-size: 2.5rem; }
+  .foot__cols a { min-height: 2.25rem; }
+  .sec--beam::before { width: min(78vw, 68.75rem); }
+  .ph__h .w { white-space: nowrap; }   /* a name is never broken: not at the hyphen of Kansas-caeleste, not inside SupernaturalENG */
+}

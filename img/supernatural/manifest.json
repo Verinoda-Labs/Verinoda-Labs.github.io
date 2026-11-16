@@ -1,0 +1,62 @@
+{
+  "ritual_shader_acik": {
+    "src_w": 1600,
+    "src_h": 855,
+    "variants": [
+      {
+        "w": 1600,
+        "h": 855,
+        "file": "ritual_shader_acik-1600.webp",
+        "bytes": 69698
+      },
+      {
+        "w": 1200,
+        "h": 641,
+        "file": "ritual_shader_acik-1200.webp",
+        "bytes": 46404
+      },
+      {
+        "w": 800,
+        "h": 428,
+        "file": "ritual_shader_acik-800.webp",
+        "bytes": 25780
+      },
+      {
+        "w": 480,
+        "h": 256,
+        "file": "ritual_shader_acik-480.webp",
+        "bytes": 11906
+      }
+    ]
+  },
+  "ritual_shader_kapali": {
+    "src_w": 1600,
+    "src_h": 855,
+    "variants": [
+      {
+        "w": 1600,
+        "h": 855,
+        "file": "ritual_shader_kapali-1600.webp",
+        "bytes": 61818
+      },
+      {
+        "w": 1200,
+        "h": 641,
+        "file": "ritual_shader_kapali-1200.webp",
+        "bytes": 39958
+      },
+      {
+        "w": 800,
+        "h": 428,
+        "file": "ritual_shader_kapali-800.webp",
+        "bytes": 20718
+      },
+      {
+        "w": 480,
+        "h": 256,
+        "file": "ritual_shader_kapali-480.webp",
+        "bytes": 8866
+      }
+    ]
+  }
+}

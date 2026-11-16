@@ -1,0 +1,903 @@
+{
+ "cover-7days-roblox": {
+  "w": 1672,
+  "h": 940,
+  "variants": [
+   {
+    "w": 1672,
+    "h": 940,
+    "file": "cover-7days-roblox-1672.webp",
+    "bytes": 43904
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-7days-roblox-1440.webp",
+    "bytes": 35412
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-7days-roblox-960.webp",
+    "bytes": 19948
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-7days-roblox-640.webp",
+    "bytes": 10632
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-7days-roblox-thumb-960.webp",
+    "bytes": 28988
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-7days-roblox-thumb-640.webp",
+    "bytes": 15816
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-7days-roblox-thumb-400.webp",
+    "bytes": 7834
+   }
+  ],
+  "alt_tr": "Tahtalarla kapatılmış pencere, aralıklardan sızan mor ışık ve sönük cam fener; illüstrasyon",
+  "alt_en": "A boarded-up window leaking violet light through the gaps, an unlit glass lantern, illustration",
+  "generated": true
+ },
+ "cover-alternatif-kanatlar-3d": {
+  "w": 1672,
+  "h": 940,
+  "variants": [
+   {
+    "w": 1672,
+    "h": 940,
+    "file": "cover-alternatif-kanatlar-3d-1672.webp",
+    "bytes": 51568
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-alternatif-kanatlar-3d-1440.webp",
+    "bytes": 41942
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-alternatif-kanatlar-3d-960.webp",
+    "bytes": 23310
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-alternatif-kanatlar-3d-640.webp",
+    "bytes": 12836
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-alternatif-kanatlar-3d-thumb-960.webp",
+    "bytes": 34682
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-alternatif-kanatlar-3d-thumb-640.webp",
+    "bytes": 19084
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-alternatif-kanatlar-3d-thumb-400.webp",
+    "bytes": 9588
+   }
+  ],
+  "alt_tr": "Katmanlı cam tüylerden yarı açık tek kanat, döner standda; illüstrasyon",
+  "alt_en": "A half-unfolded wing of layered glass feathers on a turntable stand, illustration",
+  "generated": true
+ },
+ "cover-biyoloji": {
+  "w": 1672,
+  "h": 940,
+  "variants": [
+   {
+    "w": 1672,
+    "h": 940,
+    "file": "cover-biyoloji-1672.webp",
+    "bytes": 32704
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-biyoloji-1440.webp",
+    "bytes": 26596
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-biyoloji-960.webp",
+    "bytes": 14888
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-biyoloji-640.webp",
+    "bytes": 8320
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-biyoloji-thumb-960.webp",
+    "bytes": 21134
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-biyoloji-thumb-640.webp",
+    "bytes": 11914
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-biyoloji-thumb-400.webp",
+    "bytes": 6136
+   }
+  ],
+  "alt_tr": "Cam çubuk ve kürelerden dallanan, bağlantılı konuları andıran yapı; illüstrasyon",
+  "alt_en": "A branching structure of glass rods and spheres like a neuron or topic map, illustration",
+  "generated": true
+ },
+ "cover-claude-skills": {
+  "w": 1672,
+  "h": 940,
+  "variants": [
+   {
+    "w": 1672,
+    "h": 940,
+    "file": "cover-claude-skills-1672.webp",
+    "bytes": 27648
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-claude-skills-1440.webp",
+    "bytes": 22168
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-claude-skills-960.webp",
+    "bytes": 12430
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-claude-skills-640.webp",
+    "bytes": 6998
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-claude-skills-thumb-960.webp",
+    "bytes": 17930
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-claude-skills-thumb-640.webp",
+    "bytes": 10082
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-claude-skills-thumb-400.webp",
+    "bytes": 5066
+   }
+  ],
+  "alt_tr": "Sıra hâlinde dizilmiş cam aletler, illüstrasyon",
+  "alt_en": "A row of glass tools, illustration",
+  "generated": true
+ },
+ "cover-ders": {
+  "w": 1672,
+  "h": 940,
+  "variants": [
+   {
+    "w": 1672,
+    "h": 940,
+    "file": "cover-ders-1672.webp",
+    "bytes": 38180
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-ders-1440.webp",
+    "bytes": 30652
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-ders-960.webp",
+    "bytes": 17446
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-ders-640.webp",
+    "bytes": 9850
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-ders-thumb-960.webp",
+    "bytes": 25278
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-ders-thumb-640.webp",
+    "bytes": 14232
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-ders-thumb-400.webp",
+    "bytes": 7514
+   }
+  ],
+  "alt_tr": "Cam bloklardan küçük bir masa takvimi ve cam kum saati; illüstrasyon",
+  "alt_en": "A small glass desk calendar of stacked blocks beside a glass hourglass, illustration",
+  "generated": true
+ },
+ "cover-fable-orchestration": {
+  "w": 1672,
+  "h": 940,
+  "variants": [
+   {
+    "w": 1672,
+    "h": 940,
+    "file": "cover-fable-orchestration-1672.webp",
+    "bytes": 32974
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-fable-orchestration-1440.webp",
+    "bytes": 27000
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-fable-orchestration-960.webp",
+    "bytes": 15280
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-fable-orchestration-640.webp",
+    "bytes": 8580
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-fable-orchestration-thumb-960.webp",
+    "bytes": 21716
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-fable-orchestration-thumb-640.webp",
+    "bytes": 12270
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-fable-orchestration-thumb-400.webp",
+    "bytes": 6456
+   }
+  ],
+  "alt_tr": "Basamaklı bir cam kaide; her basamakta farklı bir cam parça, ışık yukarıdan aşağı iniyor; illüstrasyon",
+  "alt_en": "A stepped glass pedestal with a different glass piece on each tier, a beam cascading down, illustration",
+  "generated": true
+ },
+ "cover-kansas": {
+  "w": 1672,
+  "h": 940,
+  "variants": [
+   {
+    "w": 1672,
+    "h": 940,
+    "file": "cover-kansas-1672.webp",
+    "bytes": 43322
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-kansas-1440.webp",
+    "bytes": 34740
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-kansas-960.webp",
+    "bytes": 18380
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-kansas-640.webp",
+    "bytes": 9432
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-kansas-thumb-960.webp",
+    "bytes": 27776
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-kansas-thumb-640.webp",
+    "bytes": 14392
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-kansas-thumb-400.webp",
+    "bytes": 6750
+   }
+  ],
+  "alt_tr": "Prerisini andıran kabartma harita biçiminde buzlu cam levha, orkide ışıkla; illüstrasyon",
+  "alt_en": "A frosted glass slab carved as a prairie relief map with a street grid and river, lit in orchid, illustration",
+  "generated": true
+ },
+ "cover-melek-kanatlari-prototipler": {
+  "w": 2048,
+  "h": 1152,
+  "variants": [
+   {
+    "w": 2048,
+    "h": 1152,
+    "file": "cover-melek-kanatlari-prototipler-2048.webp",
+    "bytes": 50504
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-melek-kanatlari-prototipler-1440.webp",
+    "bytes": 32774
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-melek-kanatlari-prototipler-960.webp",
+    "bytes": 19394
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-melek-kanatlari-prototipler-640.webp",
+    "bytes": 11310
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-melek-kanatlari-prototipler-thumb-960.webp",
+    "bytes": 26966
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-melek-kanatlari-prototipler-thumb-640.webp",
+    "bytes": 15984
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-melek-kanatlari-prototipler-thumb-400.webp",
+    "bytes": 8584
+   }
+  ],
+  "alt_tr": "Düz, köşeli cam levhalardan kurulu bir çift kanat modeli; illüstrasyon",
+  "alt_en": "A pair of wings assembled from flat faceted glass plates on a stand, illustration",
+  "generated": true
+ },
+ "cover-midnightsun": {
+  "w": 1672,
+  "h": 940,
+  "variants": [
+   {
+    "w": 1672,
+    "h": 940,
+    "file": "cover-midnightsun-1672.webp",
+    "bytes": 30082
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-midnightsun-1440.webp",
+    "bytes": 24616
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-midnightsun-960.webp",
+    "bytes": 13758
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-midnightsun-640.webp",
+    "bytes": 7482
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-midnightsun-thumb-960.webp",
+    "bytes": 20018
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-midnightsun-thumb-640.webp",
+    "bytes": 11010
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-midnightsun-thumb-400.webp",
+    "bytes": 5652
+   }
+  ],
+  "alt_tr": "Cam bir oyun kumandası ile uzaktaki ince cam panel arasında düz mor ışın; illüstrasyon",
+  "alt_en": "A glass game controller linked by a straight violet beam to a thin glass pane, illustration",
+  "generated": true
+ },
+ "cover-mikrofon": {
+  "w": 1672,
+  "h": 940,
+  "variants": [
+   {
+    "w": 1672,
+    "h": 940,
+    "file": "cover-mikrofon-1672.webp",
+    "bytes": 38506
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-mikrofon-1440.webp",
+    "bytes": 30690
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-mikrofon-960.webp",
+    "bytes": 16042
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-mikrofon-640.webp",
+    "bytes": 8260
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-mikrofon-thumb-960.webp",
+    "bytes": 24934
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-mikrofon-thumb-640.webp",
+    "bytes": 12778
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-mikrofon-thumb-400.webp",
+    "bytes": 5798
+   }
+  ],
+  "alt_tr": "Dumanlı camdan stüdyo mikrofonu, ışın bir orkide kemer olarak devam ediyor; illüstrasyon",
+  "alt_en": "A smoked-glass studio microphone with a beam continuing as an orchid arc, illustration",
+  "generated": true
+ },
+ "cover-ps-agent": {
+  "w": 1672,
+  "h": 940,
+  "variants": [
+   {
+    "w": 1672,
+    "h": 940,
+    "file": "cover-ps-agent-1672.webp",
+    "bytes": 28286
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-ps-agent-1440.webp",
+    "bytes": 22940
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-ps-agent-960.webp",
+    "bytes": 13646
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-ps-agent-640.webp",
+    "bytes": 8212
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-ps-agent-thumb-960.webp",
+    "bytes": 18294
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-ps-agent-thumb-640.webp",
+    "bytes": 10920
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-ps-agent-thumb-400.webp",
+    "bytes": 6028
+   }
+  ],
+  "alt_tr": "Aralarında eşit boşluk olan beş ince cam levha, ışık hepsinden geçiyor; illüstrasyon",
+  "alt_en": "Five thin glass plates stacked with even gaps, a beam passing through all, illustration",
+  "generated": true
+ },
+ "cover-supernatural": {
+  "w": 1672,
+  "h": 940,
+  "variants": [
+   {
+    "w": 1672,
+    "h": 940,
+    "file": "cover-supernatural-1672.webp",
+    "bytes": 46066
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-supernatural-1440.webp",
+    "bytes": 37882
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-supernatural-960.webp",
+    "bytes": 21464
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-supernatural-640.webp",
+    "bytes": 11866
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-supernatural-thumb-960.webp",
+    "bytes": 30550
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-supernatural-thumb-640.webp",
+    "bytes": 17374
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-supernatural-thumb-400.webp",
+    "bytes": 8748
+   }
+  ],
+  "alt_tr": "Tuz kristallerinden halka ve üç söndürülmüş cam mum, ışıkta mor parıltılar; illüstrasyon",
+  "alt_en": "A ring of salt crystals with three unlit glass candles, violet glints in the light, illustration",
+  "generated": true
+ },
+ "cover-symbiosis": {
+  "w": 1672,
+  "h": 940,
+  "variants": [
+   {
+    "w": 1672,
+    "h": 940,
+    "file": "cover-symbiosis-1672.webp",
+    "bytes": 28420
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-symbiosis-1440.webp",
+    "bytes": 23244
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-symbiosis-960.webp",
+    "bytes": 13536
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-symbiosis-640.webp",
+    "bytes": 7746
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-symbiosis-thumb-960.webp",
+    "bytes": 19012
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-symbiosis-thumb-640.webp",
+    "bytes": 11198
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-symbiosis-thumb-400.webp",
+    "bytes": 5952
+   }
+  ],
+  "alt_tr": "Birbirine geçmiş cam halka ve kama, ışık iki paralel mor çizgi olarak çıkıyor; illüstrasyon",
+  "alt_en": "A glass ring and wedge fitted together, a beam leaving as two parallel violet lines, illustration",
+  "generated": true
+ },
+ "cover-talk-buddy": {
+  "w": 1672,
+  "h": 940,
+  "variants": [
+   {
+    "w": 1672,
+    "h": 940,
+    "file": "cover-talk-buddy-1672.webp",
+    "bytes": 34956
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-talk-buddy-1440.webp",
+    "bytes": 28348
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-talk-buddy-960.webp",
+    "bytes": 16556
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-talk-buddy-640.webp",
+    "bytes": 9518
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-talk-buddy-thumb-960.webp",
+    "bytes": 22832
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-talk-buddy-thumb-640.webp",
+    "bytes": 13382
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-talk-buddy-thumb-400.webp",
+    "bytes": 7160
+   }
+  ],
+  "alt_tr": "Kalın şeffaf camdan üç yuvarlak konuşma balonu; illüstrasyon",
+  "alt_en": "Three rounded speech bubbles of thick clear glass in soft lilac light, illustration",
+  "generated": true
+ },
+ "cover-verinoda": {
+  "w": 1672,
+  "h": 940,
+  "variants": [
+   {
+    "w": 1672,
+    "h": 940,
+    "file": "cover-verinoda-1672.webp",
+    "bytes": 32384
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-verinoda-1440.webp",
+    "bytes": 26734
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-verinoda-960.webp",
+    "bytes": 15508
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-verinoda-640.webp",
+    "bytes": 8196
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-verinoda-thumb-960.webp",
+    "bytes": 22000
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-verinoda-thumb-640.webp",
+    "bytes": 12282
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-verinoda-thumb-400.webp",
+    "bytes": 6038
+   }
+  ],
+  "alt_tr": "Kağıt destesi üzerinde duran kalın cam büyüteç, beyaz ışını mor bir noktaya odaklıyor; illüstrasyon",
+  "alt_en": "A thick glass loupe on a stack of paper focusing a white beam to a violet point, illustration",
+  "generated": true
+ },
+ "cover-videoindirici": {
+  "w": 1672,
+  "h": 940,
+  "variants": [
+   {
+    "w": 1672,
+    "h": 940,
+    "file": "cover-videoindirici-1672.webp",
+    "bytes": 59954
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-videoindirici-1440.webp",
+    "bytes": 48632
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-videoindirici-960.webp",
+    "bytes": 27108
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-videoindirici-640.webp",
+    "bytes": 14526
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-videoindirici-thumb-960.webp",
+    "bytes": 40238
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-videoindirici-thumb-640.webp",
+    "bytes": 21740
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-videoindirici-thumb-400.webp",
+    "bytes": 10550
+   }
+  ],
+  "alt_tr": "Cam bir film makarası ve tepsiye akan şeffaf film şeridi; zemine dizilmiş mor ışık kareleri; illüstrasyon",
+  "alt_en": "A glass film reel with a strip of clear film running into a tray, small frames of violet light on the floor, illustration",
+  "generated": true
+ },
+ "cover-webcord": {
+  "w": 1672,
+  "h": 940,
+  "variants": [
+   {
+    "w": 1672,
+    "h": 940,
+    "file": "cover-webcord-1672.webp",
+    "bytes": 14354
+   },
+   {
+    "w": 1440,
+    "h": 810,
+    "file": "cover-webcord-1440.webp",
+    "bytes": 11616
+   },
+   {
+    "w": 960,
+    "h": 540,
+    "file": "cover-webcord-960.webp",
+    "bytes": 6562
+   },
+   {
+    "w": 640,
+    "h": 360,
+    "file": "cover-webcord-640.webp",
+    "bytes": 3758
+   }
+  ],
+  "thumb_variants": [
+   {
+    "w": 960,
+    "h": 720,
+    "file": "cover-webcord-thumb-960.webp",
+    "bytes": 9210
+   },
+   {
+    "w": 640,
+    "h": 480,
+    "file": "cover-webcord-thumb-640.webp",
+    "bytes": 5310
+   },
+   {
+    "w": 400,
+    "h": 300,
+    "file": "cover-webcord-thumb-400.webp",
+    "bytes": 2810
+   }
+  ],
+  "alt_tr": "Birbirine bakan iki cam prizma arasında düz bir mor ışın; illüstrasyon",
+  "alt_en": "Two glass prisms facing each other joined by one straight violet beam, illustration",
+  "generated": true
+ }
+}

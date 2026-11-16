@@ -1,0 +1,116 @@
+{
+  "beyaz": {
+    "src_w": 1400,
+    "src_h": 709,
+    "variants": [
+      {
+        "w": 1400,
+        "h": 709,
+        "file": "beyaz-1400.webp",
+        "bytes": 46904
+      },
+      {
+        "w": 1200,
+        "h": 608,
+        "file": "beyaz-1200.webp",
+        "bytes": 36874
+      },
+      {
+        "w": 800,
+        "h": 405,
+        "file": "beyaz-800.webp",
+        "bytes": 21168
+      },
+      {
+        "w": 480,
+        "h": 243,
+        "file": "beyaz-480.webp",
+        "bytes": 9634
+      }
+    ]
+  },
+  "detay": {
+    "src_w": 1200,
+    "src_h": 806,
+    "variants": [
+      {
+        "w": 1200,
+        "h": 806,
+        "file": "detay-1200.webp",
+        "bytes": 32176
+      },
+      {
+        "w": 800,
+        "h": 537,
+        "file": "detay-800.webp",
+        "bytes": 18078
+      },
+      {
+        "w": 480,
+        "h": 322,
+        "file": "detay-480.webp",
+        "bytes": 8764
+      }
+    ]
+  },
+  "kizil": {
+    "src_w": 1400,
+    "src_h": 709,
+    "variants": [
+      {
+        "w": 1400,
+        "h": 709,
+        "file": "kizil-1400.webp",
+        "bytes": 37082
+      },
+      {
+        "w": 1200,
+        "h": 608,
+        "file": "kizil-1200.webp",
+        "bytes": 29116
+      },
+      {
+        "w": 800,
+        "h": 405,
+        "file": "kizil-800.webp",
+        "bytes": 16770
+      },
+      {
+        "w": 480,
+        "h": 243,
+        "file": "kizil-480.webp",
+        "bytes": 7984
+      }
+    ]
+  },
+  "oyun-ici": {
+    "src_w": 1400,
+    "src_h": 768,
+    "variants": [
+      {
+        "w": 1400,
+        "h": 768,
+        "file": "oyun-ici-1400.webp",
+        "bytes": 46190
+      },
+      {
+        "w": 1200,
+        "h": 658,
+        "file": "oyun-ici-1200.webp",
+        "bytes": 37050
+      },
+      {
+        "w": 800,
+        "h": 439,
+        "file": "oyun-ici-800.webp",
+        "bytes": 21550
+      },
+      {
+        "w": 480,
+        "h": 263,
+        "file": "oyun-ici-480.webp",
+        "bytes": 10298
+      }
+    ]
+  }
+}

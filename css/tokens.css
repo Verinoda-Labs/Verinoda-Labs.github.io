@@ -1,0 +1,73 @@
+/* Verinoda Labs v3 — design tokens. The single source for colour, type, space and motion.
+   Pages, the build (ray tones: --c-deep → --c-orchid) and the 3D scene (studio, glass tint) read these.
+   Never add a colour, a font size or a spacing value anywhere else: take one from here. */
+:root {
+  /* ---------- colour (dark + purple → orchid) */
+  --c-bg: #08060b;          /* page floor: near black with a purple undertone */
+  --c-studio: #221430;      /* lit studio sweep; the brightest surface */
+  --c-surface: #140d1b;     /* lifted surface: alternating sections, table heads */
+  --c-ink: #f4eee9;         /* text: warm off-white (17.5:1 on --c-bg) */
+  --c-mute: #aea3b5;        /* secondary text (8.4:1 on --c-bg, 7.2:1 on --c-studio) */
+  --c-deep: #7c3aed;        /* spectrum start (most deviated ray). Never body text: 3.5:1 */
+  --c-orchid: #da70d6;      /* spectrum end. Large text and marks only */
+  --c-lilac: #e9c6f2;       /* palest orchid: focus ring, small accents (13:1) */
+  --ink-rgb: 244 238 233;
+  --bg-rgb: 8 6 11;
+  --line: rgb(var(--ink-rgb) / .14);          /* hairlines */
+  --line-strong: rgb(var(--ink-rgb) / .28);
+  --ink-2: rgb(var(--ink-rgb) / .78);         /* body copy on dark (12:1) */
+  --beam: linear-gradient(90deg, rgb(var(--ink-rgb) / 0), #fff 18%, var(--c-lilac) 40%, var(--c-orchid) 70%, var(--c-deep));
+  /* status tones (claims, measurements): verified = ink, inference = lilac, outside = orchid at low weight */
+
+  /* ---------- type: one family (Hanken Grotesk 100–900), one scale (≈1.333 from 16 px) */
+  --ff: "Hanken Grotesk", system-ui, sans-serif;
+  --ff-mono: ui-monospace, "Cascadia Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;  /* code only */
+  --fs-xs: 13px;                              /* meta, captions, table notes */
+  --fs-s: 15px;                               /* small UI, nav, secondary lines */
+  --fs-m: 18px;                               /* body */
+  --fs-l: clamp(19px, 1.45vw, 23px);          /* lead paragraphs */
+  --fs-xl: clamp(23px, 2vw, 30px);            /* h3, list titles */
+  --fs-2xl: clamp(32px, 3.6vw, 52px);         /* h2 */
+  --fs-3xl: clamp(46px, 6.2vw, 96px);         /* page h1 */
+  --fs-4xl: clamp(56px, 8.4vw, 132px);        /* display numerals, one per page at most */
+  --lh-tight: 1.02; --lh-head: 1.1; --lh-body: 1.58;
+  --w-light: 320; --w-display: 340; --w-text: 400; --w-ui: 520; --w-strong: 620;
+  --track-tight: -.032em; --track-head: -.02em;
+  --measure: 34em;                            /* body line length (~66 ch at 18 px) */
+
+  /* ---------- space: 8 px base */
+  --s-1: 8px; --s-2: 16px; --s-3: 24px; --s-4: 40px; --s-5: 64px; --s-6: 104px; --s-7: 168px;
+  --pad: clamp(20px, 5vw, 72px);              /* side gutter */
+  --max: 1360px;                              /* content max width */
+  --section: clamp(var(--s-5), 9vw, var(--s-7));   /* vertical padding of every section */
+  --header-h: 72px;
+
+  /* ---------- shape */
+  --radius: 2px;                              /* the one radius: buttons, frames, inputs */
+  --hit: 44px;                                /* minimum touch target */
+
+  /* ---------- motion */
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --t-micro: 140ms; --t-ui: 260ms; --t-reveal: 800ms; --stagger: 60ms;
+
+  color-scheme: dark;
+}
+
+/* ---------- wide screens (>= 1600 px): the same system, scaled. Below 1600 nothing here applies.
+   One multiplier does it: the root size grows from 16 px at 1600 (x1.0) to 25.6 px at 3520 (x1.6, the ceiling; x1.3 at 2560),
+   and every size/space token below is written in rem, so type, rhythm, gutter and header scale together.
+   Each rem value equals the px value the 1440 system reaches at 1600 (e.g. --fs-3xl 6rem = 96 px), so there is no step at 1600.
+   Components that hold raw px sizes get their wide rules in the "wide screens" blocks of base.css / components.css. */
+@media (min-width: 1600px) {
+  :root {
+    --ws: clamp(0px, calc(100vw - 1600px), 1920px);
+    --fs-xs: .8125rem; --fs-s: .9375rem; --fs-m: 1.125rem; --fs-l: 1.4375rem; --fs-xl: 1.875rem; --fs-2xl: 3.25rem; --fs-3xl: 6rem; --fs-4xl: 8.25rem;
+    --s-1: .5rem; --s-2: 1rem; --s-3: 1.5rem; --s-4: 2.5rem; --s-5: 4rem; --s-6: 6.5rem; --s-7: 10.5rem;
+    --pad: 4.5rem;
+    --max: max(85rem, min(calc(94vw - 2 * var(--pad)), 2000px));   /* content: 1360 px at 1600, grows with the window, never past ~2000 px (85rem = 2176 at the top) */
+    --section: var(--s-7);
+    --header-h: 4.5rem;
+  }
+  html { font-size: calc(16px + var(--ws) * .005); }
+}

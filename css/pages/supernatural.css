@@ -1,0 +1,27 @@
+/* SupernaturalENG page: layout only, tokens only. */
+.page-supernatural .sec { padding-block: clamp(var(--s-5), 7vw, var(--s-6)); }
+/* cover: the salt ring starts at ~46% of the width, so the text column is one step narrower than the shared 44vw (laptop and wider only) */
+@media (min-width: 761px) { .page-supernatural .ph__txt { max-width: min(38vw, 560px); } }
+.sn-fan .prose { max-width: 40em; font-size: var(--fs-l); line-height: 1.55; color: var(--c-ink); }
+.sn__quote { margin-top: var(--s-3); }
+.sn-shader .cmp + .split { margin-top: var(--s-6); }
+.sn-scenes .cmp { max-width: 100%; }
+.sn-scenes .split__b .kv { margin-top: 0; }
+.sn-stats .facts { margin-top: var(--s-5); }
+/* the screenshots are 854 px wide: columns keep each one at about 400 px, never above its own width */
+.sn-gal .sec__head { margin-bottom: var(--s-4); }
+.sn-gal .gal { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sn-gal .gal__f, .sn-gal .gal__f--lead, .sn-gal .gal--2 .gal__f:not(.gal__f--lead) { grid-column: auto; }
+.sn-gal .gal__frame img, .sn-gal .gal__f--lead .gal__frame img { width: 100%; max-width: 854px; }
+.sn-gal .tabs__panel { padding-top: var(--s-4); }
+.sn-kansas .split__b .facts, .sn-kansas .split__b .kv { margin-bottom: var(--s-4); }
+.sn__attr { max-width: 44em; }
+.sn-colo { padding-bottom: 0; }
+@media (max-width: 900px) { .sn-gal .gal { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .sn-gal .gal { grid-template-columns: minmax(0, 1fr); } }
+/* wide: the salt ring sits at ~46% of the cover block, the column stays left of it */
+@media (min-width: 1600px) {
+  .page-supernatural .ph__txt { max-width: min(42vw, 42rem); }
+  .sn-gal .gal__frame img, .sn-gal .gal__f--lead .gal__frame img { max-width: 640px; }   /* the shots are 854 px wide: never drawn past 640 CSS px */
+}
+@media (min-width: 2200px) { .sn-gal .gal { grid-template-columns: repeat(4, minmax(0, 1fr)); } }

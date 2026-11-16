@@ -1,0 +1,5 @@
+/* Works index page and 404: tokens only. */
+.ph--index { min-height: min(56svh, 540px); }
+.wks { padding-top: var(--s-4); }
+.nf-index { padding-top: 0; }
+@media (min-width: 1600px) { .ph--index { min-height: min(56svh, 33.75rem); } }

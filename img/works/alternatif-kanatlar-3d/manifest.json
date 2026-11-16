@@ -1,0 +1,56 @@
+{
+  "acik_arkadan": {
+    "src_w": 520,
+    "src_h": 520,
+    "variants": [
+      {
+        "w": 520,
+        "h": 520,
+        "file": "acik_arkadan-520.webp",
+        "bytes": 11526
+      },
+      {
+        "w": 480,
+        "h": 480,
+        "file": "acik_arkadan-480.webp",
+        "bytes": 10370
+      }
+    ]
+  },
+  "acik_yandan": {
+    "src_w": 520,
+    "src_h": 520,
+    "variants": [
+      {
+        "w": 520,
+        "h": 520,
+        "file": "acik_yandan-520.webp",
+        "bytes": 5104
+      },
+      {
+        "w": 480,
+        "h": 480,
+        "file": "acik_yandan-480.webp",
+        "bytes": 4578
+      }
+    ]
+  },
+  "kapali_arkadan": {
+    "src_w": 520,
+    "src_h": 520,
+    "variants": [
+      {
+        "w": 520,
+        "h": 520,
+        "file": "kapali_arkadan-520.webp",
+        "bytes": 2822
+      },
+      {
+        "w": 480,
+        "h": 480,
+        "file": "kapali_arkadan-480.webp",
+        "bytes": 2732
+      }
+    ]
+  }
+}

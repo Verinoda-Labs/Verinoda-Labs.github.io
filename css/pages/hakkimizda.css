@@ -1,0 +1,5 @@
+/* Hakkımızda: tokens only. */
+.page-about .sec { padding-block: clamp(var(--s-5), 7vw, var(--s-6)); }
+.ab-timeline .sec__head, .ab-principles .sec__head { margin-bottom: var(--s-4); }
+.ab-open .acts { margin-top: var(--s-3); }
+.ab-timeline .tlb__list { gap: var(--s-2); }

@@ -1,0 +1,17 @@
+/* İletişim: tokens only. The form is the page's one custom block (no component exists for it). */
+.page-contact .sec { padding-block: clamp(var(--s-5), 7vw, var(--s-6)); }
+.ct-k { margin-bottom: var(--s-2); }
+.ct-gh { margin-top: var(--s-4); }
+.ct-form { display: grid; gap: var(--s-3); max-width: 40em; }
+.ct-f { display: grid; gap: 6px; }
+.ct-f__l { font-size: var(--fs-s); color: var(--c-mute); }
+.ct-in { width: 100%; min-height: var(--hit); padding: 10px 14px; font: inherit; font-size: var(--fs-m); color: var(--c-ink);
+  background: var(--c-bg); border: 1px solid var(--line-strong); border-radius: var(--radius); }
+.ct-in:hover { border-color: var(--c-mute); }
+.ct-in:focus-visible { outline: 2px solid var(--c-lilac); outline-offset: 2px; }
+.ct-in[aria-invalid="true"] { border-color: var(--c-orchid); }
+textarea.ct-in { resize: vertical; min-height: 9em; }
+.ct-f__err { font-size: var(--fs-s); color: var(--c-orchid); }
+.ct-form__act { margin-top: var(--s-1); }
+.ct-form__note { max-width: 34em; }
+.ct-priv { margin-top: var(--s-4); }

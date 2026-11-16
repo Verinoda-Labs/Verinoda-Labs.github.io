@@ -1,0 +1,62 @@
+{
+  "2b_patlama": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "2b_patlama.webp",
+        "bytes": 42798
+      }
+    ]
+  },
+  "acilis_gece_150": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "acilis_gece_150.webp",
+        "bytes": 35716
+      }
+    ]
+  },
+  "castiel_bunker": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "castiel_bunker.webp",
+        "bytes": 39722
+      }
+    ]
+  },
+  "lucifer_kanat_kizil": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "lucifer_kanat_kizil.webp",
+        "bytes": 91456
+      }
+    ]
+  },
+  "melek_kanat_beyaz": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "melek_kanat_beyaz.webp",
+        "bytes": 32462
+      }
+    ]
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "dark-topic": {
+    "src_w": 1440,
+    "src_h": 900,
+    "variants": [
+      {
+        "w": 1440,
+        "h": 900,
+        "file": "dark-topic-1440.webp",
+        "bytes": 78866
+      },
+      {
+        "w": 1200,
+        "h": 750,
+        "file": "dark-topic-1200.webp",
+        "bytes": 62050
+      },
+      {
+        "w": 800,
+        "h": 500,
+        "file": "dark-topic-800.webp",
+        "bytes": 34704
+      },
+      {
+        "w": 480,
+        "h": 300,
+        "file": "dark-topic-480.webp",
+        "bytes": 15246
+      }
+    ]
+  },
+  "dark": {
+    "src_w": 1440,
+    "src_h": 900,
+    "variants": [
+      {
+        "w": 1440,
+        "h": 900,
+        "file": "dark-1440.webp",
+        "bytes": 67388
+      },
+      {
+        "w": 1200,
+        "h": 750,
+        "file": "dark-1200.webp",
+        "bytes": 51980
+      },
+      {
+        "w": 800,
+        "h": 500,
+        "file": "dark-800.webp",
+        "bytes": 29244
+      },
+      {
+        "w": 480,
+        "h": 300,
+        "file": "dark-480.webp",
+        "bytes": 13214
+      }
+    ]
+  },
+  "light": {
+    "src_w": 1344,
+    "src_h": 821,
+    "variants": [
+      {
+        "w": 1344,
+        "h": 821,
+        "file": "light-1344.webp",
+        "bytes": 57776
+      },
+      {
+        "w": 1200,
+        "h": 733,
+        "file": "light-1200.webp",
+        "bytes": 48596
+      },
+      {
+        "w": 800,
+        "h": 489,
+        "file": "light-800.webp",
+        "bytes": 27010
+      },
+      {
+        "w": 480,
+        "h": 293,
+        "file": "light-480.webp",
+        "bytes": 12554
+      }
+    ]
+  },
+  "phone": {
+    "src_w": 780,
+    "src_h": 1688,
+    "variants": [
+      {
+        "w": 780,
+        "h": 1688,
+        "file": "phone-780.webp",
+        "bytes": 68412
+      },
+      {
+        "w": 480,
+        "h": 1039,
+        "file": "phone-480.webp",
+        "bytes": 40688
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+/* Project pages (and the rich pages that reuse their parts): tokens only. */
+.pj__intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s-5); align-items: end; }
+.pj__body { font-size: var(--fs-l); line-height: 1.55; color: var(--c-ink); max-width: 36em; }
+.pj__tech { padding-left: var(--s-3); border-left: 1px solid var(--c, var(--line-strong)); max-width: 24em; }
+.pj-gal .sec__head, .pj-feat .sec__head, .pj-facts .sec__head { margin-bottom: var(--s-4); }
+.pj-note .wrap { max-width: calc(900px + 2 * var(--pad)); }
+.pj__note { padding: var(--s-3) var(--s-4); border-left: 2px solid var(--c-orchid); background: var(--c-surface); color: var(--ink-2); border-radius: var(--radius); }
+.pj-end { padding-block: var(--s-5); }
+.pj-end .kv--colophon + .pgr { margin-top: var(--s-6); }
+@media (max-width: 900px) { .pj__intro { grid-template-columns: 1fr; gap: var(--s-3); } }
+.page-work .sec, .page-verinoda .sec { padding-block: clamp(var(--s-5), 7vw, var(--s-6)); }
+.page-work .pj-note { padding-top: 0; }
+/* short pages: consecutive short sections (features, facts, note) sit half a section apart; long pages (galleries, rich pages) keep the full rhythm */
+.page-work .pj-feat + .pj-facts, .page-work .pj-feat + .pj-note, .page-work .pj-facts + .pj-note { padding-top: var(--s-4); }
+.page-work .pj-feat:has(+ .pj-facts), .page-work .pj-feat:has(+ .pj-note), .page-work .pj-facts:has(+ .pj-note) { padding-bottom: var(--s-4); }
+.page-work :is(.pj-feat, .pj-facts, .pj-note):has(+ .pj-end) { padding-bottom: var(--s-4); }
+@media (min-width: 1600px) { .pj-note .wrap { max-width: calc(56.25rem + 2 * var(--pad)); } }

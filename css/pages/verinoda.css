@@ -1,0 +1,8 @@
+/* Verinoda page: tokens only. The signature (status spectrum) and the output document live in components.css. */
+.vr-what .split__b .kv { margin-top: var(--s-5); }
+.vr-scene .stps { margin-top: var(--s-3); }
+.vr-mc .split__b .facts { grid-template-columns: 1fr; }
+.vr-play .tabs__tab { font-family: var(--ff-mono); font-size: 14px; }
+.vr-play .cd__a { border-top: 0; padding-top: 0; }
+.vr-play .cd__repo { margin: calc(-1 * var(--s-3)) 0 var(--s-4); }
+.vr-colo { padding-bottom: 0; }

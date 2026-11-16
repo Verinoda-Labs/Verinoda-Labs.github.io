@@ -1,0 +1,74 @@
+{
+  "atli2_olum": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "atli2_olum.webp",
+        "bytes": 78002
+      }
+    ]
+  },
+  "atli2_savas": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "atli2_savas.webp",
+        "bytes": 47038
+      }
+    ]
+  },
+  "exorcism_ayin": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "exorcism_ayin.webp",
+        "bytes": 40688
+      }
+    ]
+  },
+  "kapan_boyutlar": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "kapan_boyutlar.webp",
+        "bytes": 45918
+      }
+    ]
+  },
+  "lucifer": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "lucifer.webp",
+        "bytes": 99270
+      }
+    ]
+  },
+  "tuz_cember": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "tuz_cember.webp",
+        "bytes": 60140
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "hand_colt": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "hand_colt.webp",
+        "bytes": 24544
+      }
+    ]
+  },
+  "hand_luci_mizrak": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "hand_luci_mizrak.webp",
+        "bytes": 25550
+      }
+    ]
+  },
+  "hand_winchester_1887": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "hand_winchester_1887.webp",
+        "bytes": 27468
+      }
+    ]
+  }
+}

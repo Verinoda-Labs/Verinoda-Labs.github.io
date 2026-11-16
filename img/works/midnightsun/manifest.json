@@ -1,0 +1,38 @@
+{
+  "launcher-devices": {
+    "src_w": 640,
+    "src_h": 600,
+    "variants": [
+      {
+        "w": 640,
+        "h": 600,
+        "file": "launcher-devices-640.webp",
+        "bytes": 15188
+      },
+      {
+        "w": 480,
+        "h": 450,
+        "file": "launcher-devices-480.webp",
+        "bytes": 9990
+      }
+    ]
+  },
+  "launcher-settings": {
+    "src_w": 640,
+    "src_h": 600,
+    "variants": [
+      {
+        "w": 640,
+        "h": 600,
+        "file": "launcher-settings-640.webp",
+        "bytes": 17282
+      },
+      {
+        "w": 480,
+        "h": 450,
+        "file": "launcher-settings-480.webp",
+        "bytes": 11376
+      }
+    ]
+  }
+}

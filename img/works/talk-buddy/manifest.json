@@ -1,0 +1,20 @@
+{
+  "icon": {
+    "src_w": 512,
+    "src_h": 512,
+    "variants": [
+      {
+        "w": 512,
+        "h": 512,
+        "file": "icon-512.webp",
+        "bytes": 8294
+      },
+      {
+        "w": 480,
+        "h": 480,
+        "file": "icon-480.webp",
+        "bytes": 8296
+      }
+    ]
+  }
+}

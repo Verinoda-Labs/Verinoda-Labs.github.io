@@ -1,0 +1,146 @@
+{
+  "shader_el_mesale_dengeli": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "shader_el_mesale_dengeli.webp",
+        "bytes": 44080
+      }
+    ]
+  },
+  "shader_el_mesale_kapali": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "shader_el_mesale_kapali.webp",
+        "bytes": 29060
+      }
+    ]
+  },
+  "shader_gece_dengeli": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "shader_gece_dengeli.webp",
+        "bytes": 27208
+      }
+    ]
+  },
+  "shader_gece_kapali": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "shader_gece_kapali.webp",
+        "bytes": 27540
+      }
+    ]
+  },
+  "shader_kanat_duvar_dengeli": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "shader_kanat_duvar_dengeli.webp",
+        "bytes": 37708
+      }
+    ]
+  },
+  "shader_kanat_duvar_kapali": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "shader_kanat_duvar_kapali.webp",
+        "bytes": 39292
+      }
+    ]
+  },
+  "shader_kiyi_gun_dengeli": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "shader_kiyi_gun_dengeli.webp",
+        "bytes": 45170
+      }
+    ]
+  },
+  "shader_kiyi_gun_kapali": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "shader_kiyi_gun_kapali.webp",
+        "bytes": 7980
+      }
+    ]
+  },
+  "shader_magara_su_dengeli": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "shader_magara_su_dengeli.webp",
+        "bytes": 20586
+      }
+    ]
+  },
+  "shader_magara_su_kapali": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "shader_magara_su_kapali.webp",
+        "bytes": 12964
+      }
+    ]
+  },
+  "shader_nether_dengeli": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "shader_nether_dengeli.webp",
+        "bytes": 5296
+      }
+    ]
+  },
+  "shader_nether_kapali": {
+    "src_w": 854,
+    "src_h": 480,
+    "variants": [
+      {
+        "w": 854,
+        "h": 480,
+        "file": "shader_nether_kapali.webp",
+        "bytes": 5764
+      }
+    ]
+  }
+}
